@@ -29,7 +29,7 @@ def previous_quote():
 
 
 #---------------------------------------------
-st.title("Inspirational Quotes")
+st.title("Inspirational Page Navigation Ideas")
 
 display_quote()
 
@@ -42,3 +42,6 @@ with col1:
 with col2:
     if st.button("Next ⏭️", on_click=next_quote):
         pass
+
+
+# crifit of the code goes to Mr CharlyWargnier from githab page
