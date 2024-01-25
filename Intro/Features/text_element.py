@@ -112,7 +112,7 @@ st.header('Section 1')
 st.header('Section 2')
 
 #_____________________________________________________________
-st.title("4: Code of the Example above")
+st.title("5: Code of the Example above")
 
 code_example = """import streamlit as st
 
@@ -126,6 +126,109 @@ st.markdown('''
 
 st.header('Section 1')
 st.header('Section 2')
+"""
+my_code(code_example)
+st.divider()
+
+#------------------------------------------------------------
+# syntax 
+# st.subheader(body, anchor=None, *, help=None, divider=False)
+
+st.title("6: Example of st.subheader")
+
+st.subheader("This is subheader",anchor=False, help="Markdown")
+
+#_____________________________________________________________
+st.title("6: Code of the Example above")
+
+code_example = """import streamlit as st
+
+st.subheader("This is subheader",anchor=False, help="Markdown")
+"""
+my_code(code_example)
+st.divider()
+
+
+#------------------------------------------------------------
+# syntax 
+# st.caption(body, unsafe_allow_html=False, *, help=None)
+
+st.title("7: Example of st.caption")
+
+st.subheader("This is caption", help="caption help")
+
+#_____________________________________________________________
+st.title("7: Code of the Example above")
+
+code_example = """import streamlit as st
+
+st.subheader("This is caption", help="caption help")
+"""
+my_code(code_example)
+st.divider()
+
+
+#------------------------------------------------------------
+# syntax 
+# st.text(body, *, help=None)
+
+st.title("8: Example of st.text")
+
+st.text("This is text element", help="text help")
+
+#_____________________________________________________________
+st.title("8: Code of the Example above")
+
+code_example = """import streamlit as st
+
+st.text("This is text element", help="text help")
+"""
+my_code(code_example)
+st.divider()
+
+#------------------------------------------------------------
+# syntax 
+# st.latex(body, *, help=None)
+
+st.title("9: Example of st.latex element")
+
+st.latex("This is latex element", help="latex help")
+st.latex(r'''
+    a + ar + a r^2 + a r^3 + \cdots + a r^{n-1} =
+    \sum_{k=0}^{n-1} ar^k =
+    a \left(\frac{1-r^{n}}{1-r}\right)
+    ''')
+
+#_____________________________________________________________
+st.title("9: Code of the Example above")
+
+code_example = """import streamlit as st
+
+st.latex("This is text element", help="latex help")
+st.latex(r'''
+    a + ar + a r^2 + a r^3 + \cdots + a r^{n-1} =
+    \sum_{k=0}^{n-1} ar^k =
+    a \left(\frac{1-r^{n}}{1-r}\right)
+    ''')
+"""
+my_code(code_example)
+st.divider()
+
+
+#------------------------------------------------------------
+# syntax 
+# st.write("This is some write.")
+
+st.title("10: Example of st.write element")
+
+st.write("This is write element.")
+
+#_____________________________________________________________
+st.title("10: Code of the Example above")
+
+code_example = """import streamlit as st
+
+st.write("This is write element.")
 """
 my_code(code_example)
 st.divider()
