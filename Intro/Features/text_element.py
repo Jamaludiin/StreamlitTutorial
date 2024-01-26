@@ -217,18 +217,18 @@ st.divider()
 
 #------------------------------------------------------------
 # syntax 
-# st.write("This is some write.")
+# st.write(*args, unsafe_allow_html=False, **kwargs)
 
 st.title("10: Example of st.write element")
 
-st.write("This is write element.")
+st.write("This is write element.", unsafe_allow_html=False,)
 
 #_____________________________________________________________
 st.title("10: Code of the Example above")
 
 code_example = """import streamlit as st
 
-st.write("This is write element.")
+st.write("This is write element.", unsafe_allow_html=False,)
 """
 my_code(code_example)
 st.divider()
