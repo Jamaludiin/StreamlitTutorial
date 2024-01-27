@@ -1,7 +1,7 @@
 # Data elements
 import streamlit as st
 import pandas as pd
-
+import numpy as np
 
 # def
 def my_code(code):
@@ -260,14 +260,167 @@ my_code(code_example)
 st.divider()
 
 
+#------------------------------------------------------------
+# syntax 
+# st.dataframe(data=None, width=None, height=None, *, use_container_width=False, hide_index=None, 
+# column_order=None, column_config=None)
+
+st.title("7: Example of st.dataframe element")
+
+# Creating column names
+columns = []
+for i in range(20):
+    columns.append("Random %d" % i)
+
+# Creating a DataFrame with random numbers
+df = pd.DataFrame(np.random.randn(50, 20), columns=columns)
+
+checkbox_1 = st.checkbox("Highlight the maximum value along each column ")
+checkbox_2 = st.checkbox("Highlight the minimum value along each column ")
+
+if checkbox_1:
+    st.dataframe(df.style.highlight_max(axis=0))
+elif checkbox_2:
+    st.dataframe(df.style.highlight_min(axis=0))
+elif checkbox_1 & checkbox_2 == False:
+    st.dataframe(df)
+#_____________________________________________________________
+st.title("7: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+import numpy as np
+# Creating column names
+columns = []
+for i in range(20):
+    columns.append("col %d" % i)
+
+# Creating a DataFrame with random numbers
+df = pd.DataFrame(np.random.randn(50, 20), columns=columns)
+
+
+checkbox_1 = st.checkbox("Highlight the maximum value along each column ")
+checkbox_2 = st.checkbox("Highlight the minimum value along each column ")
+
+if checkbox_1:
+    st.dataframe(df.style.highlight_max(axis=0))
+elif checkbox_2:
+    st.dataframe(df.style.highlight_min(axis=0))
+elif checkbox_1 & checkbox_2 == False:
+    st.dataframe(df)
+"""
+my_code(code_example)
+st.divider()
 
 
 
+#------------------------------------------------------------
+# syntax 
+# st.dataframe(data=None, width=None, height=None, *, use_container_width=False, hide_index=None, 
+# column_order=None, column_config=None)
+
+st.title("8: Example of st.dataframe element")
+
+# Creating column names
+columns = []
+for i in range(20):
+    columns.append("Random %d" % i)
+
+# Creating a DataFrame with random numbers
+df = pd.DataFrame(np.random.randn(50, 20), columns=columns)
+
+highlight_option = st.radio("Select Highlighting Option", ["Maximum Value", "Minimum Value", "No Highlight"])
+
+
+if highlight_option == "Maximum Value":
+    st.dataframe(df.style.highlight_max(axis=0))
+elif highlight_option == "Minimum Value":
+    st.dataframe(df.style.highlight_min(axis=0))
+elif highlight_option == "No Highlight":
+    st.dataframe(df)
+#_____________________________________________________________
+st.title("8: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+import numpy as np
+
+# Creating column names
+columns = []
+for i in range(20):
+    columns.append("Random %d" % i)
+
+# Creating a DataFrame with random numbers
+df = pd.DataFrame(np.random.randn(50, 20), columns=columns)
+
+highlight_option = st.radio("Select Highlighting Option", ["Maximum Value", "Minimum Value", "No Highlight"])
+
+
+if highlight_option == "Maximum Value":
+    st.dataframe(df.style.highlight_max(axis=0))
+elif highlight_option == "Minimum Value":
+    st.dataframe(df.style.highlight_min(axis=0))
+elif highlight_option == "No Highlight":
+    st.dataframe(df)
+"""
+my_code(code_example)
+st.divider()
 
 
 
+#------------------------------------------------------------
+# syntax 
+# st.dataframe(data=None, width=None, height=None, *, use_container_width=False, hide_index=None, 
+# column_order=None, column_config=None)
+
+st.title("9: Example of st.dataframe element")
+
+var_csv_data = pd.read_csv('/Users/jamalabdullahi/Python Tutorial/StreamlitTutorial/Intro/Features/data.csv')
+
+df = pd.DataFrame(var_csv_data)
+st.write(df)
+
+highlight_option = st.radio("Select Highlighting Option", ["Mean Value", "Median Value", "Mode Value"])
+
+# Populate radio button with column names
+selected_column = st.radio("Select Column Option", df.columns.tolist())
+# Calculate statistics based on selected options
+if highlight_option == "Mean Value":
+    st.write("Mean Value of", selected_column, ":", df[selected_column].mean())
+elif highlight_option == "Median Value":
+    st.write("Median Value of", selected_column, ":", df[selected_column].median())
+elif highlight_option == "Mode Value":
+    st.write("Mode Value of", selected_column, ":", df[selected_column].mode())
+
+#_____________________________________________________________
+st.title("9: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+import numpy as np
 
 
+var_csv_data = pd.read_csv('/Users/jamalabdullahi/Python Tutorial/StreamlitTutorial/Intro/Features/data.csv')
+
+df = pd.DataFrame(var_csv_data)
+st.write(df)
+
+highlight_option = st.radio("Select Highlighting Option", ["Mean Value", "Median Value", "Mode Value"])
+
+# Populate radio button with column names
+selected_column = st.radio("Select Column Option", df.columns.tolist())
+
+# Calculate statistics based on selected options
+if highlight_option == "Mean Value":
+    st.write("Mean Value of", selected_column, ":", df[selected_column].mean())
+elif highlight_option == "Median Value":
+    st.write("Median Value of", selected_column, ":", df[selected_column].median())
+elif highlight_option == "Mode Value":
+    st.write("Mode Value of", selected_column, ":", df[selected_column].mode())
+
+"""
+my_code(code_example)
+st.divider()
 
 
 
