@@ -233,7 +233,6 @@ st.divider()
 st.title("6: Example of st.dataframe element")
 
 var_csv_data = pd.read_csv('/Users/jamalabdullahi/Python Tutorial/StreamlitTutorial/Intro/Features/data.csv')
-st.write(str(var_csv_data.info()))
 
 # There is also a tail() method for viewing the last rows of the DataFrame.
 st.subheader("The last five rows")
