@@ -424,6 +424,78 @@ st.divider()
 
 
 
+#------------------------------------------------------------
+# syntax 
+# st.dataframe(data=None, width=None, height=None, *, use_container_width=False, hide_index=None, 
+# column_order=None, column_config=None)
+
+st.title("10: Example of st.dataframe element")
+
+# Creating column names
+columns = []
+for i in range(20):
+    columns.append("Random %d" % i)
+
+# Creating a DataFrame with random numbers
+df = pd.DataFrame(np.random.randn(50, 20), columns=columns)
+
+st.write(df)
+
+highlight_option = st.radio("Select Operation", ["Convert into Intiger Values", "Convert into Float Values", "Duplicate Values"])
+
+# Populate radio button with column names
+selected_columns = st.radio("Select Column Option", df.columns.tolist())
+# Calculate statistics based on selected options
+if highlight_option == "Convert into Intiger Values":
+    #convert the colories column data into int
+    df[selected_columns] = df[selected_columns].astype(int)
+    st.write( df[selected_columns])
+elif highlight_option == "Convert into Float Values":
+    df[selected_columns] = df[selected_columns].astype(float)
+    st.write( df[selected_columns])
+elif highlight_option == "Duplicate Values":
+    st.write("The Duplicated Value of", selected_columns, ":", df[selected_columns].duplicated())
+
+#_____________________________________________________________
+st.title("9: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+import numpy as np
+
+# Creating column names
+columns = []
+for i in range(20):
+    columns.append("Random %d" % i)
+
+# Creating a DataFrame with random numbers
+df = pd.DataFrame(np.random.randn(50, 20), columns=columns)
+
+st.write(df)
+
+highlight_option = st.radio("Select Operation", ["Convert into Intiger Values", "Convert into Float Values", "Duplicate Values"])
+
+# Populate radio button with column names
+selected_columns = st.radio("Select Column Option", df.columns.tolist())
+# Calculate statistics based on selected options
+if highlight_option == "Convert into Intiger Values":
+    #convert the colories column data into int
+    df[selected_columns] = df[selected_columns].astype(int)
+    st.write( df[selected_columns])
+elif highlight_option == "Convert into Float Values":
+    df[selected_columns] = df[selected_columns].astype(float)
+    st.write( df[selected_columns])
+elif highlight_option == "Duplicate Values":
+    st.write("The Duplicated Value of", selected_columns, ":", df[selected_columns].duplicated())
+"""
+my_code(code_example)
+st.divider()
+
+
+
+
+
+
 
 
 
