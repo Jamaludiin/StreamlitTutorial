@@ -457,7 +457,7 @@ elif highlight_option == "Duplicate Values":
     st.write("The Duplicated Value of", selected_columns, ":", df[selected_columns].duplicated())
 
 #_____________________________________________________________
-st.title("9: Code of the Example above")
+st.title("10: Code of the Example above")
 
 code_example = """import streamlit as st
 import pandas as pd
@@ -494,7 +494,132 @@ st.divider()
 
 
 
+#------------------------------------------------------------
+# syntax 
+# st.dataframe(data=None, width=None, height=None, *, use_container_width=False, hide_index=None, 
+# column_order=None, column_config=None)
 
+st.title("11: Example of st.dataframe element")
+st.subheader("Display specific row")
+
+var_csv_data = pd.read_csv('/Users/jamalabdullahi/Python Tutorial/StreamlitTutorial/Intro/Features/data.csv')
+
+row_index = st.number_input("What is your Favorite Row Number?", 0, 100, 5)
+
+if row_index:
+     st.write(var_csv_data.iloc[row_index]) 
+else:
+    st.write(var_csv_data) 
+#_____________________________________________________________
+st.title("11: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+import numpy as np
+
+st.subheader("Display specific row")
+
+var_csv_data = pd.read_csv('/Users/jamalabdullahi/Python Tutorial/StreamlitTutorial/Intro/Features/data.csv')
+
+row_index = st.number_input("What is your Favorite Row Number?", 0, 100, 5)
+
+if row_index:
+     st.write(var_csv_data.iloc[row_index]) 
+else:
+    st.write(var_csv_data) 
+"""
+my_code(code_example)
+st.divider()
+
+#_____________________________________________________________
+st.title("12: Code of the Example above")
+
+st.subheader("Display specific Column and its values")
+# display the column names and display them on the selectbox
+# Display selectbox for column selection
+selected_column = st.selectbox("Select Column", var_csv_data.columns.tolist())
+
+# Display selected column name
+
+if selected_column:
+     st.write(var_csv_data[selected_column]) 
+else:
+    st.write(var_csv_data) 
+
+# or using 
+mult_selected_column = st.multiselect("Select Multiple Columns", var_csv_data.columns.tolist())
+
+# Display selected column name
+
+if mult_selected_column:
+     st.write(var_csv_data[mult_selected_column]) 
+else:
+    st.write(var_csv_data) 
+
+#_____________________________________________________________
+st.title("12: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+import numpy as np
+
+st.subheader("Display specific Column and its values")
+# display the column names and display them on the selectbox
+# Display selectbox for column selection
+selected_column = st.selectbox("Select Column", var_csv_data.columns.tolist())
+
+# Display selected column name
+
+if selected_column:
+     st.write(var_csv_data[selected_column]) 
+else:
+    st.write(var_csv_data) 
+
+# or using 
+mult_selected_column = st.multiselect("Select Multiple Columns", var_csv_data.columns.tolist())
+
+# Display selected column name
+
+if mult_selected_column:
+     st.write(var_csv_data[mult_selected_column]) 
+else:
+    st.write(var_csv_data)  
+"""
+my_code(code_example)
+st.divider()
+
+#---------------------------------------------------------------------------------------
+st.title("13: Code of the Example above")
+
+st.subheader("Display specific Rows and its values")
+
+# Display all row numbers
+selected_rows = st.multiselect("Select Row Number",range(0,len(var_csv_data)))
+if selected_rows:
+     st.write(var_csv_data.iloc[selected_rows]) 
+else:
+    st.write(var_csv_data)
+
+#_____________________________________________________________
+st.title("13: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+import numpy as np
+
+st.subheader("Display specific Rows and its values")
+
+# Display all row numbers
+selected_rows = st.multiselect("Select Row Number",range(0,len(var_csv_data)))
+if selected_rows:
+     st.write(var_csv_data.iloc[selected_rows]) 
+else:
+    st.write(var_csv_data) 
+"""
+my_code(code_example)
+st.divider()
+
+#---------------------------------------------------------------------------------------
 
 
 df = pd.DataFrame(
