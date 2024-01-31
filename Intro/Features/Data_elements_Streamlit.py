@@ -622,11 +622,51 @@ else:
 my_code(code_example)
 st.divider()
 
-
 #---------------------------------------------------------------------------------------
 st.title("14: Code of the Example above")
 
+st.subheader("Display The DataFrame in full width")
+
+var_csv_data = pd.read_csv('/Users/jamalabdullahi/Python Tutorial/StreamlitTutorial/Intro/Features/data.csv')
+
+# Cache the dataframe so it's only loaded once
+
+# Boolean to resize the dataframe, stored as a session state variable
+st.checkbox("Use container width", value=True, key="use_container_width")
+
+# Display the dataframe and allow the user to stretch the dataframe
+# across the full width of the container, based on the checkbox value
+st.dataframe(var_csv_data, use_container_width=st.session_state.use_container_width)
+
+#_____________________________________________________________
+st.title("14: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+import numpy as np
+
+st.subheader("Display The DataFrame in full width")
+
+var_csv_data = pd.read_csv('/Users/jamalabdullahi/Python Tutorial/StreamlitTutorial/Intro/Features/data.csv')
+
+# Cache the dataframe so it's only loaded once
+
+# Boolean to resize the dataframe, stored as a session state variable
+st.checkbox("Use container width", value=True, key="use_container_width")
+
+# Display the dataframe and allow the user to stretch the dataframe
+# across the full width of the container, based on the checkbox value
+st.dataframe(var_csv_data, use_container_width=st.session_state.use_container_width)
+"""
+my_code(code_example)
+st.divider()
+#---------------------------------------------------------------------------------------
+st.title("15: Code of the Example above")
+
 st.subheader("Display Graph or plots")
+# Load the CSV data into a DataFrame
+var_csv_data = pd.read_csv('/Users/jamalabdullahi/Python Tutorial/StreamlitTutorial/Intro/Features/data.csv')
+
 selected_graph = st.multiselect("Select Graph Type", ["Bar Chart", "Line Chart"])
 
 # Check if the user has selected any graph type
@@ -653,7 +693,7 @@ if selected_graph:
 else:
     st.write("Please select at least one graph type.")
 #_____________________________________________________________
-st.title("14: Code of the Example above")
+st.title("15: Code of the Example above")
 
 code_example = """import streamlit as st
 import pandas as pd
@@ -662,6 +702,9 @@ import matplotlib.pyplot as plt
 import io
 
 st.subheader("Display Graph or plots")
+# Load the CSV data into a DataFrame
+var_csv_data = pd.read_csv('/Users/jamalabdullahi/Python Tutorial/StreamlitTutorial/Intro/Features/data.csv')
+
 selected_graph = st.multiselect("Select Graph Type", ["Bar Chart", "Line Chart"])
 
 # Check if the user has selected any graph type
