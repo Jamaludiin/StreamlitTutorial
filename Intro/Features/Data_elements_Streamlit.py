@@ -2,6 +2,9 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import io
 
 # def
 def my_code(code):
@@ -619,6 +622,74 @@ else:
 my_code(code_example)
 st.divider()
 
+
+#---------------------------------------------------------------------------------------
+st.title("14: Code of the Example above")
+
+st.subheader("Display Graph or plots")
+selected_graph = st.multiselect("Select Graph Type", ["Bar Chart", "Line Chart"])
+
+# Check if the user has selected any graph type
+if selected_graph:
+    # Display the selected graph types
+    for graph_type in selected_graph:
+        if graph_type == "Bar Chart":
+            st.subheader("Bar Chart")
+            fig = sns.barplot(data=var_csv_data)
+            # Convert Matplotlib plot to PNG image
+            png = io.BytesIO()
+            fig.figure.savefig(png, format='png')
+            # Display the PNG image
+            st.image(png.getvalue())
+
+        elif graph_type == "Line Chart":
+            st.subheader("Line Chart")
+            fig = sns.lineplot(data=var_csv_data)
+            # Convert Matplotlib plot to PNG image
+            png = io.BytesIO()
+            fig.figure.savefig(png, format='png')
+            # Display the PNG image
+            st.image(png.getvalue())
+else:
+    st.write("Please select at least one graph type.")
+#_____________________________________________________________
+st.title("14: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import io
+
+st.subheader("Display Graph or plots")
+selected_graph = st.multiselect("Select Graph Type", ["Bar Chart", "Line Chart"])
+
+# Check if the user has selected any graph type
+if selected_graph:
+    # Display the selected graph types
+    for graph_type in selected_graph:
+        if graph_type == "Bar Chart":
+            st.subheader("Bar Chart")
+            fig = sns.barplot(data=var_csv_data)
+            # Convert Matplotlib plot to PNG image
+            png = io.BytesIO()
+            fig.figure.savefig(png, format='png')
+            # Display the PNG image
+            st.image(png.getvalue())
+
+        elif graph_type == "Line Chart":
+            st.subheader("Line Chart")
+            fig = sns.lineplot(data=var_csv_data)
+            # Convert Matplotlib plot to PNG image
+            png = io.BytesIO()
+            fig.figure.savefig(png, format='png')
+            # Display the PNG image
+            st.image(png.getvalue())
+else:
+    st.write("Please select at least one graph type.")
+"""
+my_code(code_example)
+st.divider()
 #---------------------------------------------------------------------------------------
 
 
