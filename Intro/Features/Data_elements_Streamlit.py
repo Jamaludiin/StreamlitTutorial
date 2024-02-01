@@ -649,8 +649,6 @@ st.subheader("Display The DataFrame in full width")
 
 var_csv_data = pd.read_csv('/Users/jamalabdullahi/Python Tutorial/StreamlitTutorial/Intro/Features/data.csv')
 
-# Cache the dataframe so it's only loaded once
-
 # Boolean to resize the dataframe, stored as a session state variable
 st.checkbox("Use container width", value=True, key="use_container_width")
 
