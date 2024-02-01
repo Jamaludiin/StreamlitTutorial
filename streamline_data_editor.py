@@ -48,6 +48,11 @@ edited_df = st.data_editor(df,use_container_width=st.session_state.use_container
 
 st.subheader("The above output is Dataframe using data_editor")
 
+# Display rows where "Pass" is True
+st.subheader("Select the Pass Rows To display:")
+for index, row in edited_df.iterrows():
+    if row["Pass"]:
+        st.write(row)
 #_____________________________________________________________
 st.title("1: Code of the Example above")
 
@@ -90,6 +95,12 @@ st.checkbox("Maximize the container width", value=True, key="use_container_width
 edited_df = st.data_editor(df,use_container_width=st.session_state.use_container_width)
 
 st.subheader("The above output is Dataframe using data_editor")
+
+# Display rows where "Pass" is True
+st.subheader("Select the Pass Rows To display:")
+for index, row in edited_df.iterrows():
+    if row["Pass"]:
+        st.write(row)
 """
 
 my_code(code_example)
