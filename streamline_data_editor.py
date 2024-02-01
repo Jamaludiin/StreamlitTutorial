@@ -247,7 +247,6 @@ st.title("3: Code of the Example above")
 code_example = """import streamlit as st
 import pandas as pd
 
-
 st.title("3: Example of Data Editor with Custom Settings using st.data_editor")
 
 # Sample DataFrame
@@ -290,6 +289,101 @@ elif select_setting_option == 'Disable row edit':
 
 # Display data editor with selected settings
 st.subheader("Data Editor with Custom Settings")
+"""
+my_code(code_example)
+st.divider()
+
+
+
+#------------------------------------------------------------
+
+# st.data_editor(data, *, width=None, height=None, use_container_width=False, 
+# hide_index=None, column_order=None, column_config=None, num_rows="fixed", disabled=False, key=None, 
+# on_change=None, args=None, kwargs=None)
+
+st.title("4: Example of Data Editor and Disabling some columns to edit using st.data_editor")
+
+# Sample DataFrame
+df = pd.DataFrame(
+    [
+       {"Name": "Leyla Haward", 
+        "Score": 99, 
+        "Pass": True,
+        "Gift": "$200"
+        },
+       {"Name": "Mike Lepard", 
+        "Score": 49, 
+        "Pass": False,
+        "Gift": "$50"
+        },
+       {"Name": "Joseph Coward", 
+        "Score": 89, 
+        "Pass": True,
+        "Gift": "$270"
+        },
+        {"Name": "Munier Ali", 
+        "Score": 43, 
+        "Pass": False,
+        "Gift": "$48"
+        },
+   ]
+)
+
+# Multiselect for selecting options
+select_setting_option = st.multiselect("Select Columns not to be Edited",df.columns.tolist())
+
+if select_setting_option:
+    st.data_editor(df, disabled=(select_setting_option))
+else:
+    st.data_editor(df)
+
+# Display data editor with selected settings
+st.subheader(f"Data Editor with Custom Disable edit{select_setting_option}")
+
+#_____________________________________________________________
+st.title("4: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+
+st.title("3: Example of Data Editor with Custom Settings using st.data_editor")
+
+# Sample DataFrame
+df = pd.DataFrame(
+    [
+       {"Name": "Leyla Haward", 
+        "Score": 99, 
+        "Pass": True,
+        "Gift": "$200"
+        },
+       {"Name": "Mike Lepard", 
+        "Score": 49, 
+        "Pass": False,
+        "Gift": "$50"
+        },
+       {"Name": "Joseph Coward", 
+        "Score": 89, 
+        "Pass": True,
+        "Gift": "$270"
+        },
+        {"Name": "Munier Ali", 
+        "Score": 43, 
+        "Pass": False,
+        "Gift": "$48"
+        },
+   ]
+)
+
+# Multiselect for selecting options
+select_setting_option = st.multiselect("Select Columns not to be Edited",df.columns.tolist())
+
+if select_setting_option:
+    st.data_editor(df, disabled=(select_setting_option))
+else:
+    st.data_editor(df)
+
+# Display data editor with selected settings
+st.subheader(f"Data Editor with Custom Disable edit{select_setting_option}")
 """
 my_code(code_example)
 st.divider()
