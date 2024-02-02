@@ -396,8 +396,6 @@ st.subheader(f"Data Editor with Custom Disable edit{select_setting_option}")
 my_code(code_example)
 st.divider()
 
-
-
 #------------------------------------------------------------
 
 # st.data_editor(data, *, width=None, height=None, use_container_width=False, 
@@ -453,3 +451,63 @@ edited_df = st.data_editor(
 # return only the name of the person
 winder_name = edited_df.loc[edited_df["Score"].idxmax()]["Name"]
 st.markdown(f"The winner Name is **{winder_name}**")
+
+#_____________________________________________________________
+st.title("5: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+
+
+st.title("5: Example of customizing the st.data_editor (column_config, hide_index, column_order, or disabled)")
+
+# Sample DataFrame
+df = pd.DataFrame(
+    [
+       {"Name": "Leyla Haward", 
+        "Score": 99, 
+        "Pass": True,
+        "Gift": "$200"
+        },
+       {"Name": "Mike Lepard", 
+        "Score": 49, 
+        "Pass": False,
+        "Gift": "$50"
+        },
+       {"Name": "Joseph Coward", 
+        "Score": 89, 
+        "Pass": True,
+        "Gift": "$270"
+        },
+        {"Name": "Munier Ali", 
+        "Score": 43, 
+        "Pass": False,
+        "Gift": "$48"
+        },
+   ]
+)
+
+edited_df = st.data_editor(
+    df,
+    column_config={
+        "Name": "Student Names", # renamed the Name column
+        "Score": st.column_config.NumberColumn(
+            "Final Score", # renamed the Score column
+            help="Maximum scores ranges from 0-100?",
+            min_value=0,
+            max_value=100,
+            step=1,
+            format="%d ⭐",
+        ),
+        "Pass": "Passed", # renamed the Pass column
+    },
+    disabled=["Name", "Pass"],
+    hide_index=True,
+)
+
+# return only the name of the person
+winder_name = edited_df.loc[edited_df["Score"].idxmax()]["Name"]
+st.markdown(f"The winner Name is **{winder_name}**")
+"""
+my_code(code_example)
+st.divider()
