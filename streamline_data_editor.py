@@ -514,6 +514,7 @@ st.divider()
 
 
 #------------------------------------------------------------
+st.title("6: Example of outofilling some text areas with row values)")
 
 # Sample DataFrame
 df = pd.DataFrame({
@@ -543,9 +544,123 @@ else:
     st.text_input("Score", "", key="textbox2")
     st.text_input("Pass", "", key="textbox3")
     st.text_input("Gift", "", key="textbox4")
+#_____________________________________________________________
+st.title("6: Code of the Example above")
 
+code_example = """import streamlit as st
+import pandas as pd
+import numpy as np
 
+# Sample DataFrame
+df = pd.DataFrame({
+    "Name": ["Leyla Haward", "Mike Lepard", "Joseph Coward", "Munier Ali"],
+    "Score": [99, 49, 89, 43],
+    "Pass": [True, False, True, False],
+    "Gift": ["$200", "$50", "$270", "$48"],
+    "Fill": [True, False, False, False],
+})
 
+# Display the DataFrame with data editor
+edited_df = st.data_editor(df)
+
+# Checkbox to fill data
+fill_checkbox = st.checkbox("Fill", key="fill_checkbox")
+
+# Text boxes to display row data
+if fill_checkbox:
+    selected_row_index = edited_df[edited_df["Fill"] == True].index[0]  # Index of the first row where "Fill" is True
+    selected_row = df.iloc[selected_row_index]
+    st.text_input("Name", selected_row["Name"], key="textbox1")
+    st.text_input("Score", str(selected_row["Score"]), key="textbox2")
+    st.text_input("Pass", str(selected_row["Pass"]), key="textbox3")
+    st.text_input("Gift", selected_row["Gift"], key="textbox4")
+else:
+    st.text_input("Name", "", key="textbox1")
+    st.text_input("Score", "", key="textbox2")
+    st.text_input("Pass", "", key="textbox3")
+    st.text_input("Gift", "", key="textbox4")
+"""
+my_code(code_example)
+st.divider()
+
+# -------------------------------------------------------------------------------------
+st.title("7: Example of outofilling some text areas with row values with another way)")
+
+# Sample DataFrame
+df = pd.DataFrame({
+    "Name": ["Leyla Haward", "Mike Lepard", "Joseph Coward", "Munier Ali"],
+    "Score": [99, 49, 89, 43],
+    "Pass": [True, False, True, False],
+    "Gift": ["$200", "$50", "$270", "$48"],
+    "Fill": [True, False, False, False],
+})
+
+st.write("Another way with no error if all fill disalected")
+
+# Display the DataFrame with data editor
+edited_df = st.data_editor(df, key="data_editor")
+
+# Checkbox to fill data
+fill_checkbox = st.checkbox("Fill", key="fill_checkbox1")
+# Text boxes to display row data
+if fill_checkbox:
+    if any(edited_df["Fill"]):  # Check if any row is marked for filling
+        selected_row_index = edited_df[edited_df["Fill"] == True].index[0]  # Index of the first row where "Fill" is True
+        selected_row = df.iloc[selected_row_index]
+        st.text_input("Name", selected_row["Name"], key="textbox10")
+        st.text_input("Score", str(selected_row["Score"]), key="textbox20")
+        st.text_input("Pass", str(selected_row["Pass"]), key="textbox30")
+        st.text_input("Gift", selected_row["Gift"], key="textbox40")
+    else:
+        st.text("No row selected for filling.")
+else:
+    st.text_input("Name", "", key="textbox10")
+    st.text_input("Score", "", key="textbox20")
+    st.text_input("Pass", "", key="textbox30")
+    st.text_input("Gift", "", key="textbox40")
+
+#_____________________________________________________________
+st.title("7: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+import numpy as np
+
+# Sample DataFrame
+df = pd.DataFrame({
+    "Name": ["Leyla Haward", "Mike Lepard", "Joseph Coward", "Munier Ali"],
+    "Score": [99, 49, 89, 43],
+    "Pass": [True, False, True, False],
+    "Gift": ["$200", "$50", "$270", "$48"],
+    "Fill": [True, False, False, False],
+})
+
+st.write("Another way with no error if all fill disalected")
+
+# Display the DataFrame with data editor
+edited_df = st.data_editor(df, key="data_editor")
+
+# Checkbox to fill data
+fill_checkbox = st.checkbox("Fill", key="fill_checkbox1")
+# Text boxes to display row data
+if fill_checkbox:
+    if any(edited_df["Fill"]):  # Check if any row is marked for filling
+        selected_row_index = edited_df[edited_df["Fill"] == True].index[0]  # Index of the first row where "Fill" is True
+        selected_row = df.iloc[selected_row_index]
+        st.text_input("Name", selected_row["Name"], key="textbox10")
+        st.text_input("Score", str(selected_row["Score"]), key="textbox20")
+        st.text_input("Pass", str(selected_row["Pass"]), key="textbox30")
+        st.text_input("Gift", selected_row["Gift"], key="textbox40")
+    else:
+        st.text("No row selected for filling.")
+else:
+    st.text_input("Name", "", key="textbox10")
+    st.text_input("Score", "", key="textbox20")
+    st.text_input("Pass", "", key="textbox30")
+    st.text_input("Gift", "", key="textbox40")
+"""
+my_code(code_example)
+st.divider()
 
 # Text boxes to display row data
 
