@@ -511,3 +511,66 @@ st.markdown(f"The winner Name is **{winder_name}**")
 """
 my_code(code_example)
 st.divider()
+
+
+#------------------------------------------------------------
+
+# Sample DataFrame
+df = pd.DataFrame({
+    "Name": ["Leyla Haward", "Mike Lepard", "Joseph Coward", "Munier Ali"],
+    "Score": [99, 49, 89, 43],
+    "Pass": [True, False, True, False],
+    "Gift": ["$200", "$50", "$270", "$48"],
+    "Fill": [True, False, False, False],
+})
+
+# Display the DataFrame with data editor
+edited_df = st.data_editor(df)
+
+# Checkbox to fill data
+fill_checkbox = st.checkbox("Fill", key="fill_checkbox")
+
+# Text boxes to display row data
+if fill_checkbox:
+    selected_row_index = edited_df[edited_df["Fill"] == True].index[0]  # Index of the first row where "Fill" is True
+    selected_row = df.iloc[selected_row_index]
+    st.text_input("Name", selected_row["Name"], key="textbox1")
+    st.text_input("Score", str(selected_row["Score"]), key="textbox2")
+    st.text_input("Pass", str(selected_row["Pass"]), key="textbox3")
+    st.text_input("Gift", selected_row["Gift"], key="textbox4")
+else:
+    st.text_input("Name", "", key="textbox1")
+    st.text_input("Score", "", key="textbox2")
+    st.text_input("Pass", "", key="textbox3")
+    st.text_input("Gift", "", key="textbox4")
+
+
+
+
+# Text boxes to display row data
+
+#st.text_input("Name", edited_df.loc[edited_df["Gift"] == "$48", "Name"].values[0], key="textbox10")
+#st.text_input("Score", edited_df.loc[edited_df["Gift"] == "$48", "Score"].values[0], key="textbox20")
+#st.text_input("Pass", edited_df.loc[edited_df["Gift"] == "$48", "Pass"].values[0], key="textbox30")
+#st.text_input("Gift", edited_df.loc[edited_df["Gift"] == "$48", "Gift"].values[0], key="textbox40")
+
+
+# st.text_input("Name", edited_df.loc["Fill"] == True ["Name"], key="textbox8")
+
+# st.text_input("Name", edited_df.loc[edited_df["Gift"] == "$48", "Name"].values[0], key="textbox8")
+
+# Display the DataFrame
+#edited_df = st.data_editor(df)
+#the_selected_row = edited_df.loc[edited_df["Fill"]]
+#st.subheader("The Selected info is")
+
+# code to capture row clicks .ex. when the fill only becomes true
+#if edited_df["Fill"] ==  True:
+    #st.text_input("Name", edited_df.loc["Fill"] == True ["Name"], key="textbox1")
+    #st.text_input("Score", edited_df["Score"], key="textbox2")
+    #st.text_input("Pass", edited_df["Pass"], key="textbox3")
+    #st.text_input("Gift", edited_df["Gift"], key="textbox4")
+#else:
+  # st.write("Not selected row fill")
+
+# winder_name = edited_df.loc[edited_df["Score"].idxmax()]["Name"]
