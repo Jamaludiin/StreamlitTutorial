@@ -792,7 +792,7 @@ my_code(code_example)
 st.divider()
 
 # ---------------------------------------------------------
-st.title("10: Example of outo fill and auto key widget generation with for loop)")
+st.title("10: Example of auto fill and auto key widget generation with for loop)")
 
 # Sample DataFrame
 df = pd.DataFrame({
@@ -803,36 +803,23 @@ df = pd.DataFrame({
     "Fill": [True, False, False, False],
 })
 
-st.write("Another way with outo fill and auto key widget generation with for loop")
-
+st.write("Another way of auto filling and output will be the last selected row. auto key widget generation with for loop")
 # Display the DataFrame with data editor
-edited_df = st.data_editor(df, key="fill_checkbox4")
-
-# firt check the values stored in selected_row_index 
-selected_row_index = []
-selected_row_index.append(edited_df[edited_df["Fill"] == True].index[0])  # Index of the first row where "Fill" is True
-st.write(selected_row_index)
-
-
-
-
-
+edited_df = st.data_editor(df, key="data_editor4")
 
 # Checkbox to fill data
 fill_checkbox = st.checkbox("Fill", key=f"{str(index)+'chkbox2'}")
 # Text boxes to display row data
 if fill_checkbox:
     if any(edited_df["Fill"]):  # Check if any row is marked for filling
-        selected_row_index = []
-        #for index, row in edited_df[edited_df["Fill"] == True]:
-        selected_row_index.append(edited_df[edited_df["Fill"] == True].index[0])  # Index of the first row where "Fill" is True
+        selected_rows = edited_df[edited_df["Fill"] == True]  # Select all rows marked for filling
+        last_selected_row_index = selected_rows.index[-1]  # Index of the last selected row
+        last_selected_row = df.loc[last_selected_row_index]  # Retrieve the row data
         
-        selected_row = df.iloc[selected_row_index.index[-1:]]
-        
-        st.text_input("Name", selected_row["Name"], key=f"{str(index)+'text14'}")
-        st.text_input("Score", str(selected_row["Score"]), key=f"{str(index)+'text24'}")
-        st.text_input("Pass", str(selected_row["Pass"]), key=f"{str(index)+'text34'}")
-        st.text_input("Gift", selected_row["Gift"], key=f"{str(index)+'text44'}")
+        st.text_input("Name", last_selected_row["Name"], key=f"{str(index)+'text14'}")
+        st.text_input("Score", str(last_selected_row["Score"]), key=f"{str(index)+'text24'}")
+        st.text_input("Pass", str(last_selected_row["Pass"]), key=f"{str(index)+'text34'}")
+        st.text_input("Gift", last_selected_row["Gift"], key=f"{str(index)+'text44'}")
     else:
         st.text("No row selected for filling.")
 else:
@@ -842,7 +829,49 @@ else:
     st.text_input("Gift", "", key=f"{str(index)+'text44'}")
 
 
+#_____________________________________________________________
+st.title("10: Code of the Example above")
 
+code_example = """import streamlit as st
+import pandas as pd
+import numpy as np
+
+# Sample DataFrame
+df = pd.DataFrame({
+    "Name": ["Leyla Haward", "Mike Lepard", "Joseph Coward", "Munier Ali"],
+    "Score": [99, 49, 89, 43],
+    "Pass": [True, False, True, False],
+    "Gift": ["$200", "$50", "$270", "$48"],
+    "Fill": [True, False, False, False],
+})
+
+st.write("Another way of auto filling and output will be the last selected row. auto key widget generation with for loop")
+# Display the DataFrame with data editor
+edited_df = st.data_editor(df, key="data_editor4")
+
+# Checkbox to fill data
+fill_checkbox = st.checkbox("Fill", key=f"{str(index)+'chkbox2'}")
+# Text boxes to display row data
+if fill_checkbox:
+    if any(edited_df["Fill"]):  # Check if any row is marked for filling
+        selected_rows = edited_df[edited_df["Fill"] == True]  # Select all rows marked for filling
+        last_selected_row_index = selected_rows.index[-1]  # Index of the last selected row
+        last_selected_row = df.loc[last_selected_row_index]  # Retrieve the row data
+        
+        st.text_input("Name", last_selected_row["Name"], key=f"{str(index)+'text14'}")
+        st.text_input("Score", str(last_selected_row["Score"]), key=f"{str(index)+'text24'}")
+        st.text_input("Pass", str(last_selected_row["Pass"]), key=f"{str(index)+'text34'}")
+        st.text_input("Gift", last_selected_row["Gift"], key=f"{str(index)+'text44'}")
+    else:
+        st.text("No row selected for filling.")
+else:
+    st.text_input("Name", "", key=f"{str(index)+'text14'}")
+    st.text_input("Score", "", key=f"{str(index)+'text24'}")
+    st.text_input("Pass", "", key=f"{str(index)+'text34'}")
+    st.text_input("Gift", "", key=f"{str(index)+'text44'}")
+"""
+my_code(code_example)
+st.divider()
 
  # for index, row in edited_df.iterrows():
            # if row["Fill"]:
