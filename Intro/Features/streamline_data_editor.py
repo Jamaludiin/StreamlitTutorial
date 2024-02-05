@@ -828,7 +828,6 @@ else:
     st.text_input("Pass", "", key=f"{str(index)+'text34'}")
     st.text_input("Gift", "", key=f"{str(index)+'text44'}")
 
-
 #_____________________________________________________________
 st.title("10: Code of the Example above")
 
@@ -872,6 +871,7 @@ else:
 """
 my_code(code_example)
 st.divider()
+
 
  # for index, row in edited_df.iterrows():
            # if row["Fill"]:
