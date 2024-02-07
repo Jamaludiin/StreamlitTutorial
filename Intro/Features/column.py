@@ -36,7 +36,6 @@ with col3:
 st.title("12: Code of the Example above")
 
 code_example = """import streamlit as st
-import pandas as pd
 
 st.subheader("Display and group elements under Columns")
 
@@ -68,10 +67,30 @@ st.divider()
 st.subheader("Display charts and other data elements under Columns")
 
 col1, col2 = st.columns([3, 1])
-data = np.random.randn(10, 1)
+data = np.random.randn(100, 5)
 
 col1.subheader("Column one with a chart")
 col1.line_chart(data)
 
-col2.subheader("Column two with the data")
+col2.subheader("The row Data in clumn two")
 col2.write(data)
+
+#_____________________________________________________________
+st.title("12: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+
+st.subheader("Display charts and other data elements under Columns")
+
+col1, col2 = st.columns([3, 1])
+data = np.random.randn(100, 5)
+
+col1.subheader("Column one with a chart")
+col1.line_chart(data)
+
+col2.subheader("The row Data in clumn two")
+col2.write(data)
+"""
+my_code(code_example)
+st.divider()
