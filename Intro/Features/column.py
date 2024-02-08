@@ -33,7 +33,7 @@ with col3:
 
 
 #_____________________________________________________________
-st.title("12: Code of the Example above")
+st.title("1: Code of the Example above")
 
 code_example = """import streamlit as st
 
@@ -64,7 +64,7 @@ st.divider()
 #------------------------------------------------------------
 # syntax 
 # st.columns(spec, *, gap="small")
-st.subheader("Display charts and other data elements under Columns")
+st.subheader("2: Example: Display charts and other data elements under Columns")
 
 col1, col2 = st.columns([3, 1])
 data = np.random.randn(100, 5)
@@ -76,12 +76,12 @@ col2.subheader("The row Data in clumn two")
 col2.write(data)
 
 #_____________________________________________________________
-st.title("12: Code of the Example above")
+st.title("2: Code of the Example above")
 
 code_example = """import streamlit as st
 import pandas as pd
 
-st.subheader("Display charts and other data elements under Columns")
+st.subheader("2: Example: Display charts and other data elements under Columns")
 
 col1, col2 = st.columns([3, 1])
 data = np.random.randn(100, 5)
@@ -91,6 +91,43 @@ col1.line_chart(data)
 
 col2.subheader("The row Data in clumn two")
 col2.write(data)
+"""
+my_code(code_example)
+st.divider()
+
+#------------------------------------------------------------
+# syntax 
+# st.columns(spec, *, gap="small")
+
+st.subheader("3: Example: Display charts and other data elements under Columns")
+
+var_csv_data = pd.read_csv('/Users/jamalabdullahi/Python Tutorial/StreamlitTutorial/Intro/Features/data.csv')
+
+col1, col2 = st.columns([3, 1])
+
+col1.subheader("Column one with a chart")
+col1.line_chart(var_csv_data)
+
+col2.subheader("Clumn two with row Data")
+col2.write(var_csv_data)
+
+#_____________________________________________________________
+st.title("2: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+
+st.subheader("3: Example: Display charts and other data elements under Columns")
+
+var_csv_data = pd.read_csv('/Users/jamalabdullahi/Python Tutorial/StreamlitTutorial/Intro/Features/data.csv')
+
+col1, col2 = st.columns([3, 1])
+
+col1.subheader("Column one with a chart")
+col1.line_chart(var_csv_data)
+
+col2.subheader("Clumn two with row Data")
+col2.write(var_csv_data)
 """
 my_code(code_example)
 st.divider()
