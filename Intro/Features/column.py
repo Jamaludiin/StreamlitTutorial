@@ -106,13 +106,14 @@ var_csv_data = pd.read_csv('/Users/jamalabdullahi/Python Tutorial/StreamlitTutor
 col1, col2 = st.columns([3, 1])
 
 col1.subheader("Column one with a chart")
-col1.line_chart(var_csv_data)
+col1.bar_chart(var_csv_data[var_csv_data.columns.to_list()])
+# col1.bar_chart(var_csv_data) same to the above
 
 col2.subheader("Clumn two with row Data")
 col2.write(var_csv_data)
 
 #_____________________________________________________________
-st.title("2: Code of the Example above")
+st.title("3: Code of the Example above")
 
 code_example = """import streamlit as st
 import pandas as pd
@@ -124,10 +125,56 @@ var_csv_data = pd.read_csv('/Users/jamalabdullahi/Python Tutorial/StreamlitTutor
 col1, col2 = st.columns([3, 1])
 
 col1.subheader("Column one with a chart")
-col1.line_chart(var_csv_data)
+col1.bar_chart(var_csv_data)
 
 col2.subheader("Clumn two with row Data")
 col2.write(var_csv_data)
+"""
+my_code(code_example)
+st.divider()
+
+#------------------------------------------------------------
+# syntax 
+# st.columns(spec, *, gap="small")
+st.subheader("4: Example: Display charts and other data elements under Columns")
+var_csv_data = pd.read_csv('/Users/jamalabdullahi/Python Tutorial/StreamlitTutorial/Intro/Features/data.csv')
+
+# Populate radio button with column names
+selected_column = st.radio("Select Column Option", var_csv_data.columns.tolist())
+
+col1, col2 = st.columns([3, 1])
+# Calculate statistics based on selected options
+if selected_column in selected_column:
+    col1.subheader("Column one with a chart")
+    col1.line_chart(var_csv_data[selected_column])
+
+    col2.subheader("Clumn two with median")
+    col2.write(var_csv_data[selected_column].median())
+else:
+    pass
+
+#_____________________________________________________________
+st.title("4: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+
+st.subheader("4: Example: Display charts and other data elements under Columns")
+var_csv_data = pd.read_csv('/Users/jamalabdullahi/Python Tutorial/StreamlitTutorial/Intro/Features/data.csv')
+
+# Populate radio button with column names
+selected_column = st.radio("Select Column Option", var_csv_data.columns.tolist())
+
+col1, col2 = st.columns([3, 1])
+# Calculate statistics based on selected options
+if selected_column in selected_column:
+    col1.subheader("Column one with a chart")
+    col1.line_chart(var_csv_data[selected_column])
+
+    col2.subheader("Clumn two with median")
+    col2.write(var_csv_data[selected_column].median())
+else:
+    pass
 """
 my_code(code_example)
 st.divider()
