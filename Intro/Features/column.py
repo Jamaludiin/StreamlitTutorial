@@ -305,3 +305,85 @@ st.data_editor(
 """
 my_code(code_example)
 st.divider()
+
+#------------------------------------------------------------
+# syntax 
+# st.column_config.NumberColumn(label=None, *, width=None, help=None, disabled=None, required=None, default=None, format=None, min_value=None, max_value=None, step=None)
+st.subheader("7: Example: st.column_config.NumberColumn")
+# Sample DataFrame
+df = pd.DataFrame({
+    "Name": ["Leyla Haward", "Mike Lepard", "Joseph Coward", "Munier Ali"],
+    "Score": [99, 49, 89, 43],
+    "Pass": [True, False, True, False],
+    "Gift": ["$200", "$50", "$270", "$48"],
+    "Fill": [True, False, False, False],
+})
+
+
+st.data_editor(
+    df,
+    column_config={
+        "Score": st.column_config.NumberColumn(
+            "Marks (0-100)",
+            help="The score of the student",
+            min_value=0,
+            max_value=100,
+            step=1,
+            format="$%d",
+        ),
+
+        "Gift": st.column_config.NumberColumn(
+            "Gift (0-300)",
+            help="The Gift of the student",
+            min_value=0,
+            max_value=300,
+            step=1,
+            format="$%d",
+        )
+    },
+    hide_index=True,
+)
+
+#_____________________________________________________________
+st.title("7: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+
+st.subheader("7: Example: st.column_config.NumberColumn")
+# Sample DataFrame
+df = pd.DataFrame({
+    "Name": ["Leyla Haward", "Mike Lepard", "Joseph Coward", "Munier Ali"],
+    "Score": [99, 49, 89, 43],
+    "Pass": [True, False, True, False],
+    "Gift": ["$200", "$50", "$270", "$48"],
+    "Fill": [True, False, False, False],
+})
+
+
+st.data_editor(
+    df,
+    column_config={
+        "Score": st.column_config.NumberColumn(
+            "Marks (0-100)",
+            help="The score of the student",
+            min_value=0,
+            max_value=100,
+            step=1,
+            format="$%d",
+        ),
+
+        "Gift": st.column_config.NumberColumn(
+            "Gift (0-300)",
+            help="The Gift of the student",
+            min_value=0,
+            max_value=300,
+            step=1,
+            format="$%d",
+        )
+    },
+    hide_index=True,
+)
+"""
+my_code(code_example)
+st.divider()
