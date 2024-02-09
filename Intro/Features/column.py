@@ -448,3 +448,81 @@ st.data_editor(
 """
 my_code(code_example)
 st.divider()
+
+
+
+#------------------------------------------------------------
+# syntax 
+# st.column_config.SelectboxColumn(label=None, *, width=None, help=None, disabled=None, required=None, default=None, options=None)
+st.subheader("9: Example: st.column_config.SelectboxColumn")
+df = pd.DataFrame(
+    {
+        "Software Subjects": [
+            "📊 Software Design",
+            "📈 Software Modeling",
+            "🤖 Software Measurement",
+            "📊 Requirement Engineering",
+            "📊 Requirement Engineering",
+        ],
+    }
+)
+
+st.data_editor(
+    df,
+    column_config={
+        "Software Subjects": st.column_config.SelectboxColumn(
+            "Software SubCoursesject",
+            help="The Software courses we provide",
+            width="medium",
+            options=[
+            "📊 Software Design",
+            "📈 Software Modeling",
+            "🤖 Software Measurement",
+            "📊 Requirement Engineering"
+            ],
+            required=True,
+        )
+    },
+    hide_index=True,
+)
+
+#_____________________________________________________________
+st.title("9: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+
+st.subheader("9: Example: st.column_config.SelectboxColumn")
+df = pd.DataFrame(
+    {
+        "Software Subjects": [
+            "📊 Software Design",
+            "📈 Software Modeling",
+            "🤖 Software Measurement",
+            "📊 Requirement Engineering",
+            "📊 Requirement Engineering",
+        ],
+    }
+)
+
+st.data_editor(
+    df,
+    column_config={
+        "Software Subjects": st.column_config.SelectboxColumn(
+            "Software SubCoursesject",
+            help="The Software courses we provide",
+            width="medium",
+            options=[
+            "📊 Software Design",
+            "📈 Software Modeling",
+            "🤖 Software Measurement",
+            "📊 Requirement Engineering"
+            ],
+            required=True,
+        )
+    },
+    hide_index=True,
+)
+"""
+my_code(code_example)
+st.divider()
