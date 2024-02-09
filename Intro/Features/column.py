@@ -178,3 +178,130 @@ else:
 """
 my_code(code_example)
 st.divider()
+
+
+#------------------------------------------------------------
+# syntax 
+# st.column_config.Column(label=None, *, width=None, help=None, disabled=None, required=None)
+st.subheader("5: Example: Column config")
+# Sample DataFrame
+df = pd.DataFrame({
+    "Name": ["Leyla Haward", "Mike Lepard", "Joseph Coward", "Munier Ali"],
+    "Score": [99, 49, 89, 43],
+    "Pass": [True, False, True, False],
+    "Gift": ["$200", "$50", "$270", "$48"],
+    "Fill": [True, False, False, False],
+})
+
+st.data_editor(
+    df,
+    column_config={
+        "Name": st.column_config.Column(
+            "Student Names",
+            help="Student Pass School",
+            width="medium",
+            required=True,
+        )
+    },
+    hide_index=True,
+    num_rows="dynamic",
+)
+
+#_____________________________________________________________
+st.title("5: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+
+st.subheader("5: Example: Column config")
+# Sample DataFrame
+df = pd.DataFrame({
+    "Name": ["Leyla Haward", "Mike Lepard", "Joseph Coward", "Munier Ali"],
+    "Score": [99, 49, 89, 43],
+    "Pass": [True, False, True, False],
+    "Gift": ["$200", "$50", "$270", "$48"],
+    "Fill": [True, False, False, False],
+})
+
+st.data_editor(
+    df,
+    column_config={
+        "Name": st.column_config.Column(
+            "Student Names",
+            help="Student Pass School",
+            width="medium",
+            required=True,
+        )
+    },
+    hide_index=True,
+    num_rows="dynamic",
+)
+"""
+my_code(code_example)
+st.divider()
+
+
+#------------------------------------------------------------
+# syntax 
+# st.column_config.TextColumn(label=None, *, width=None, help=None, disabled=None, required=None, default=None, max_chars=None, validate=None)
+st.subheader("6: Example: st.column_config.TextColumn")
+# Sample DataFrame
+df = pd.DataFrame({
+    "Name": ["Leyla Haward", "Mike Lepard", "Joseph Coward", "Munier Ali"],
+    "Score": [99, 49, 89, 43],
+    "Pass": [True, False, True, False],
+    "Gift": ["$200", "$50", "$270", "$48"],
+    "Fill": [True, False, False, False],
+})
+
+
+st.data_editor(
+    df,
+    column_config={
+        "Name": st.column_config.TextColumn(
+            "Student Names",
+            help="Student Pass School",
+            default="st.",
+            max_chars=50,
+            validate="^st\.[a-z_]+$",
+        )
+    },
+    hide_index=True,
+    num_rows="dynamic"
+
+)
+#_____________________________________________________________
+st.title("6: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+
+st.subheader("6: Example: st.column_config.TextColumn")
+# Sample DataFrame
+df = pd.DataFrame({
+    "Name": ["Leyla Haward", "Mike Lepard", "Joseph Coward", "Munier Ali"],
+    "Score": [99, 49, 89, 43],
+    "Pass": [True, False, True, False],
+    "Gift": ["$200", "$50", "$270", "$48"],
+    "Fill": [True, False, False, False],
+})
+
+
+st.data_editor(
+    df,
+    column_config={
+        "Name": st.column_config.TextColumn(
+            "Student Names",
+            help="Student Pass School",
+            default="st.",
+            max_chars=50,
+            validate="^st\.[a-z_]+$",
+        )
+    },
+    hide_index=True,
+    num_rows="dynamic"
+
+)
+"""
+my_code(code_example)
+st.divider()
