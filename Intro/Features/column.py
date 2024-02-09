@@ -341,7 +341,7 @@ st.data_editor(
             format="$%d",
         )
     },
-    hide_index=True,
+    hide_index=False,
 )
 
 #_____________________________________________________________
@@ -382,7 +382,68 @@ st.data_editor(
             format="$%d",
         )
     },
-    hide_index=True,
+    hide_index=False,
+)
+"""
+my_code(code_example)
+st.divider()
+
+
+#------------------------------------------------------------
+# syntax 
+# st.column_config.CheckboxColumn(label=None, *, width=None, help=None, disabled=None, required=None, default=None)
+st.subheader("7: Example: st.column_config.CheckboxColumn")
+
+# Sample DataFrame
+df = pd.DataFrame({
+    "Name": ["Leyla Haward", "Mike Lepard", "Joseph Coward", "Munier Ali"],
+    "Score": [99, 49, 89, 43],
+    "Pass": [True, False, True, False],
+    "Gift": ["$200", "$50", "$270", "$48"],
+    "Fill": [True, False, False, False],
+})
+
+st.data_editor(
+    df,
+    column_config={
+        "Pass": st.column_config.CheckboxColumn(
+            "Student Pass or Not?",
+            help="Select student Pass",
+            default=False,
+        )
+    },
+    disabled=["Fill"],
+    hide_index=False,
+)
+
+#_____________________________________________________________
+st.title("8: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+
+st.subheader("8: Example: st.column_config.CheckboxColumn")
+
+# Sample DataFrame
+df = pd.DataFrame({
+    "Name": ["Leyla Haward", "Mike Lepard", "Joseph Coward", "Munier Ali"],
+    "Score": [99, 49, 89, 43],
+    "Pass": [True, False, True, False],
+    "Gift": ["$200", "$50", "$270", "$48"],
+    "Fill": [True, False, False, False],
+})
+
+st.data_editor(
+    df,
+    column_config={
+        "Pass": st.column_config.CheckboxColumn(
+            "Student Pass or Not?",
+            help="Select student Pass",
+            default=False,
+        )
+    },
+    disabled=["Fill"],
+    hide_index=False,
 )
 """
 my_code(code_example)
