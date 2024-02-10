@@ -2,6 +2,8 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 from datetime import datetime
+from datetime import date
+
 
 # def
 def my_code(code):
@@ -576,7 +578,8 @@ date_available = st.data_editor(
             max_value=datetime(2028, 1, 1),
             format="D MMM YYYY, h:mm a",
             step=60,
-            help="Book your time"
+            help="Book your time",
+            width=400,
         ),
     },
     hide_index=True,
@@ -624,7 +627,8 @@ date_available = st.data_editor(
             max_value=datetime(2028, 1, 1),
             format="D MMM YYYY, h:mm a",
             step=60,
-            help="Book your time"
+            help="Book your time",
+            width=400,
         ),
     },
     hide_index=True,
@@ -643,3 +647,117 @@ else:
 """
 my_code(code_example)
 st.divider()
+
+#------------------------------------------------------------
+# syntax 
+# st.column_config.DateColumn(label=None, *, width=None, help=None, disabled=None, required=None, default=None, format=None, min_value=None, max_value=None, step=None)
+
+st.subheader("11: Example: st.column_config.DateColumn")
+
+date_df = pd.DataFrame(
+    {
+        "Date Invented": [date(1999, 2, 5), date(1980, 8, 13), date(1992, 5, 10), date(2002, 9, 11), ],
+        "Programming": ["Python", "Java", "HTML", "C++"],
+        "Difficult": ["Easy", "Hard", "Hard", "Easy"],
+        "Available": [True, False, True, True],
+    }
+)
+
+language_available = st.data_editor(
+    date_df,
+    column_config={
+        "Date Invented": st.column_config.DateColumn(
+            "Date Created",
+            help="Date Invented for the languages",
+            min_value=date(1960, 12, 12),
+            max_value=date(2020, 12, 12),
+            format="DD.MM.YYYY",
+            step=1,
+            width=400
+        )
+    },
+    hide_index=True,
+)
+
+# Display the the available dates
+# Checkbox to fill data
+fill_checkbox = st.checkbox("Select Columns not to be Edited", key="fill_checkbox1")
+
+# Text boxes to display row data
+if fill_checkbox:
+    select_setting_option = st.multiselect("Dont edit These Columns",language_available.columns.to_list())
+    if select_setting_option:
+      st.data_editor(language_available, disabled=(select_setting_option))
+
+   # selected_language = language_available[language_available["Available"] == True]
+   # st.write("The available dates:", selected_language)
+else:
+   st.write("All columns are editable:")
+
+
+#_____________________________________________________________
+st.title("11: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+from datetime import date
+
+st.subheader("11: Example: st.column_config.DateColumn")
+
+date_df = pd.DataFrame(
+    {
+        "Date Invented": [date(1999, 2, 5), date(1980, 8, 13), date(1992, 5, 10), date(2002, 9, 11), ],
+        "Programming": ["Python", "Java", "HTML", "C++"],
+        "Difficult": ["Easy", "Hard", "Hard", "Easy"],
+        "Available": [True, False, True, True],
+    }
+)
+
+language_available = st.data_editor(
+    date_df,
+    column_config={
+        "Date Invented": st.column_config.DateColumn(
+            "Date Created",
+            help="Date Invented for the languages",
+            min_value=date(1960, 12, 12),
+            max_value=date(2020, 12, 12),
+            format="DD.MM.YYYY",
+            step=1,
+            width=400
+        )
+    },
+    hide_index=True,
+)
+
+# Display the the available dates
+# Checkbox to fill data
+fill_checkbox = st.checkbox("Select Columns not to be Edited", key="fill_checkbox1")
+
+# Text boxes to display row data
+if fill_checkbox:
+    select_setting_option = st.multiselect("Dont edit These Columns",language_available.columns.to_list())
+    if select_setting_option:
+      st.data_editor(language_available, disabled=(select_setting_option))
+
+   # selected_language = language_available[language_available["Available"] == True]
+   # st.write("The available dates:", selected_language)
+else:
+   st.write("All columns are editable:")
+"""
+my_code(code_example)
+st.divider()
+
+#------------------------------------------------------------
+# syntax 
+# st.column_config.TimeColumn(label=None, *, width=None, help=None, disabled=None, required=None, default=None, format=None, min_value=None, max_value=None, step=None)
+
+st.subheader("11: Example: st.column_config.TimeColumn")
+
+date_df = pd.DataFrame(
+    {
+        "Date Invented": [date(1999, 2, 5), date(1980, 8, 13), date(1992, 5, 10), date(2002, 9, 11), ],
+        "Programming": ["Python", "Java", "HTML", "C++"],
+        "Difficult": ["Easy", "Hard", "Hard", "Easy"],
+        "Available": [True, False, True, True],
+    }
+)
