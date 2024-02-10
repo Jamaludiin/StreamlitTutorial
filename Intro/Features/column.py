@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 from datetime import datetime
 from datetime import date
+from datetime import time
 
 
 # def
@@ -751,13 +752,89 @@ st.divider()
 # syntax 
 # st.column_config.TimeColumn(label=None, *, width=None, help=None, disabled=None, required=None, default=None, format=None, min_value=None, max_value=None, step=None)
 
-st.subheader("11: Example: st.column_config.TimeColumn")
+st.subheader("12: Example: st.column_config.TimeColumn")
 
 date_df = pd.DataFrame(
     {
-        "Date Invented": [date(1999, 2, 5), date(1980, 8, 13), date(1992, 5, 10), date(2002, 9, 11), ],
         "Programming": ["Python", "Java", "HTML", "C++"],
+        "Date Invented": [date(1999, 2, 5), date(1980, 8, 13), date(1992, 5, 10), date(2002, 9, 11)],
+        "Class Period": [time(10, 40), time(12, 40), time(4, 33), time(20, 33)],
         "Difficult": ["Easy", "Hard", "Hard", "Easy"],
         "Available": [True, False, True, True],
     }
 )
+
+edited_df = st.data_editor(
+    date_df,
+    column_config={
+        "Class Period": st.column_config.TimeColumn(
+            "Class Time",
+            help="This is course time",
+            min_value=time(8, 0, 0),
+            max_value=time(19, 0, 0),
+            format="hh:mm a",
+            step=60,
+            width=100
+        ),
+    },
+    hide_index=True,
+)
+
+# Checkbox to fill data
+fill_checkbox = st.checkbox("Show available Classes", key="fill_checkbox2")
+
+# Text boxes to display row data
+if fill_checkbox:
+   if any(edited_df["Available"]):
+       st.write(edited_df[edited_df["Available"] == False])
+   else:
+      st.write("All Classes are available")
+
+
+#_____________________________________________________________
+st.title("11: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+from datetime import time
+
+st.subheader("12: Example: st.column_config.TimeColumn")
+
+date_df = pd.DataFrame(
+    {
+        "Programming": ["Python", "Java", "HTML", "C++"],
+        "Date Invented": [date(1999, 2, 5), date(1980, 8, 13), date(1992, 5, 10), date(2002, 9, 11)],
+        "Class Period": [time(10, 40), time(12, 40), time(4, 33), time(20, 33)],
+        "Difficult": ["Easy", "Hard", "Hard", "Easy"],
+        "Available": [True, False, True, True],
+    }
+)
+
+edited_df = st.data_editor(
+    date_df,
+    column_config={
+        "Class Period": st.column_config.TimeColumn(
+            "Class Time",
+            help="This is course time",
+            min_value=time(8, 0, 0),
+            max_value=time(19, 0, 0),
+            format="hh:mm a",
+            step=60,
+            width=100
+        ),
+    },
+    hide_index=True,
+)
+
+# Checkbox to fill data
+fill_checkbox = st.checkbox("Show available Classes", key="fill_checkbox2")
+
+# Text boxes to display row data
+if fill_checkbox:
+   if any(edited_df["Available"]):
+       st.write(edited_df[edited_df["Available"] == False])
+   else:
+      st.write("All Classes are available")
+"""
+my_code(code_example)
+st.divider()
