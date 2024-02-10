@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-from fuzzywuzzy import process
+from datetime import datetime
 
 # def
 def my_code(code):
@@ -545,6 +545,101 @@ def most_selected_item(df):
 if any(selected_subject):
     most_selected = most_selected_item(selected_subject)
     st.write("Most selected item:", most_selected)
+"""
+my_code(code_example)
+st.divider()
+
+#------------------------------------------------------------
+# syntax 
+# st.column_config.DatetimeColumn(label=None, *, width=None, help=None, disabled=None, required=None, default=None, format=None, min_value=None, max_value=None, step=None, timezone=None)
+st.subheader("10: Example: st.column_config.DatetimeColumn")
+
+date_df = pd.DataFrame(
+    {
+        "Dates": [
+            datetime(2024, 8, 8, 12, 30),
+            datetime(2023, 7, 11, 18, 30),
+            datetime(2010, 3, 12, 20, 20),
+            datetime(2023, 11, 6, 3, 22),
+        ],
+        "Available": [True, False, True, True],
+
+    }
+)
+
+date_available = st.data_editor(
+    date_df,
+    column_config={
+        "Dates": st.column_config.DatetimeColumn(
+            "Schedule",
+            min_value=datetime(2010, 3, 12),
+            max_value=datetime(2028, 1, 1),
+            format="D MMM YYYY, h:mm a",
+            step=60,
+            help="Book your time"
+        ),
+    },
+    hide_index=True,
+)
+
+# Display the the available dates
+# Checkbox to fill data
+fill_checkbox = st.checkbox("Show Available Dates", key="fill_checkbox")
+
+# Text boxes to display row data
+if fill_checkbox:
+    selected_row_index = date_available[date_available["Available"] == True]
+    st.write("The available dates:", selected_row_index)
+else:
+   st.write("There is no available dates:")
+
+#_____________________________________________________________
+st.title("10: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+from datetime import datetime
+
+st.subheader("10: Example: st.column_config.DatetimeColumn")
+
+date_df = pd.DataFrame(
+    {
+        "Dates": [
+            datetime(2024, 8, 8, 12, 30),
+            datetime(2023, 7, 11, 18, 30),
+            datetime(2010, 3, 12, 20, 20),
+            datetime(2023, 11, 6, 3, 22),
+        ],
+        "Available": [True, False, True, True],
+
+    }
+)
+
+date_available = st.data_editor(
+    date_df,
+    column_config={
+        "Dates": st.column_config.DatetimeColumn(
+            "Schedule",
+            min_value=datetime(2010, 3, 12),
+            max_value=datetime(2028, 1, 1),
+            format="D MMM YYYY, h:mm a",
+            step=60,
+            help="Book your time"
+        ),
+    },
+    hide_index=True,
+)
+
+# Display the the available dates
+# Checkbox to fill data
+fill_checkbox = st.checkbox("Show Available Dates", key="fill_checkbox")
+
+# Text boxes to display row data
+if fill_checkbox:
+    selected_row_index = date_available[date_available["Available"] == True]
+    st.write("The available dates:", selected_row_index)
+else:
+   st.write("There is no available dates:")
 """
 my_code(code_example)
 st.divider()
