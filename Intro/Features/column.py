@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-
+from fuzzywuzzy import process
 
 # def
 def my_code(code):
@@ -467,11 +467,11 @@ df = pd.DataFrame(
     }
 )
 
-st.data_editor(
+selected_subject = st.data_editor(
     df,
     column_config={
         "Software Subjects": st.column_config.SelectboxColumn(
-            "Software SubCoursesject",
+            "Software Subjects",
             help="The Software courses we provide",
             width="medium",
             options=[
@@ -486,6 +486,17 @@ st.data_editor(
     hide_index=True,
 )
 
+# Function to find the most frequently selected item
+def most_selected_item(df):
+    if any(selected_subject):
+        most_common_item = selected_subject["Software Subjects"].mode()[0]
+        return most_common_item
+
+# Return the most selected item if a selection is made
+if any(selected_subject):
+    most_selected = most_selected_item(selected_subject)
+    st.write("Most selected item:", most_selected)
+
 #_____________________________________________________________
 st.title("9: Code of the Example above")
 
@@ -494,7 +505,7 @@ import pandas as pd
 
 st.subheader("9: Example: st.column_config.SelectboxColumn")
 df = pd.DataFrame(
-    {
+     {
         "Software Subjects": [
             "📊 Software Design",
             "📈 Software Modeling",
@@ -505,11 +516,11 @@ df = pd.DataFrame(
     }
 )
 
-st.data_editor(
+selected_subject = st.data_editor(
     df,
     column_config={
         "Software Subjects": st.column_config.SelectboxColumn(
-            "Software SubCoursesject",
+            "Software Subjects",
             help="The Software courses we provide",
             width="medium",
             options=[
@@ -523,6 +534,17 @@ st.data_editor(
     },
     hide_index=True,
 )
+
+# Function to find the most frequently selected item
+def most_selected_item(df):
+    if any(selected_subject):
+        most_common_item = selected_subject["Software Subjects"].mode()[0]
+        return most_common_item
+
+# Return the most selected item if a selection is made
+if any(selected_subject):
+    most_selected = most_selected_item(selected_subject)
+    st.write("Most selected item:", most_selected)
 """
 my_code(code_example)
 st.divider()
