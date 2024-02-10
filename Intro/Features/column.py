@@ -792,10 +792,11 @@ if fill_checkbox:
 
 
 #_____________________________________________________________
-st.title("11: Code of the Example above")
+st.title("12: Code of the Example above")
 
 code_example = """import streamlit as st
 import pandas as pd
+from datetime import date
 from datetime import time
 
 st.subheader("12: Example: st.column_config.TimeColumn")
@@ -835,6 +836,81 @@ if fill_checkbox:
        st.write(edited_df[edited_df["Available"] == False])
    else:
       st.write("All Classes are available")
+"""
+my_code(code_example)
+st.divider()
+
+#------------------------------------------------------------
+# syntax 
+# st.column_config.ListColumn(label=None, *, width=None, help=None)
+st.subheader("13: Example: st.column_config.ListColumn")
+
+list_df = pd.DataFrame(
+    {
+        "Attandence": [
+            [6, 8, 9, 8, 10, 11],
+            [6, 7, 5, 11, 11, 12],
+            [4, 7, 8, 9, 8, 11],
+            [11, 10, 3, 4, 5, 6],
+        ],
+        "Programming": ["Python", "Java", "HTML", "C++"],
+        "Date Invented": [date(1999, 2, 5), date(1980, 8, 13), date(1992, 5, 10), date(2002, 9, 11)],
+        "Class Period": [time(10, 40), time(12, 40), time(4, 33), time(20, 33)],
+        "Difficult": ["Easy", "Hard", "Hard", "Easy"],
+        "Available": [True, False, True, True],
+    }
+)
+
+st.data_editor(
+    list_df,
+    column_config={
+        "Attandence": st.column_config.ListColumn(
+            "Attandence Hours",
+            help="Attandence Hours per week",
+            width="medium",
+        ),
+    },
+    hide_index=False,
+)
+
+
+#_____________________________________________________________
+st.title("13: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+from datetime import date
+from datetime import time
+
+st.subheader("13: Example: st.column_config.ListColumn")
+
+list_df = pd.DataFrame(
+    {
+        "Attandence": [
+            [6, 8, 9, 8, 10, 11],
+            [6, 7, 5, 11, 11, 12],
+            [4, 7, 8, 9, 8, 11],
+            [11, 10, 3, 4, 5, 6],
+        ],
+        "Programming": ["Python", "Java", "HTML", "C++"],
+        "Date Invented": [date(1999, 2, 5), date(1980, 8, 13), date(1992, 5, 10), date(2002, 9, 11)],
+        "Class Period": [time(10, 40), time(12, 40), time(4, 33), time(20, 33)],
+        "Difficult": ["Easy", "Hard", "Hard", "Easy"],
+        "Available": [True, False, True, True],
+    }
+)
+
+st.data_editor(
+    list_df,
+    column_config={
+        "Attandence": st.column_config.ListColumn(
+            "Attandence Hours",
+            help="Attandence Hours per week",
+            width="medium",
+        ),
+    },
+    hide_index=False,
+)
 """
 my_code(code_example)
 st.divider()
