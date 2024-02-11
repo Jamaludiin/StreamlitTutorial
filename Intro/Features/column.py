@@ -961,3 +961,163 @@ st.data_editor(
     },
     hide_index=True,
 )
+
+#_____________________________________________________________
+st.title("14: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+
+st.subheader("14: Example: st.column_config.LinkColumn")
+
+link_df = pd.DataFrame(
+    {
+        "StreamlitTutorial": [
+            "https://docs.streamlit.io/library/api-reference/widgets/st.text_input",
+            "https://docs.streamlit.io/library/api-reference/data/st.column_config/st.column_config.linkcolumn",
+            "https://docs.streamlit.io/knowledge-base/tutorials/build-conversational-apps",
+            "https://docs.streamlit.io/library/api-reference",
+            "https://docs.streamlit.io/library/api-reference/write-magic",
+        ],
+        "github Profile": [
+            "https://github.com/Jamaludiin/NumPy",
+            "https://github.com/Jamaludiin/PythonTutorial",
+            "https://github.com/Jamaludiin/Pandas",
+            "https://github.com/Jamaludiin/StreamlitTutorial",
+            "https://github.com/Jamaludiin/File-Handling-with-Python",
+        ],
+    }
+)
+
+
+
+st.data_editor(
+    link_df,
+    column_config={
+        "StreamlitTutorial": st.column_config.LinkColumn(
+            "Streamlit Tutorials",
+            help="Most popular Streamlit tutorials",
+            validate="^https://[a-z]+\.streamlit\.app$",
+            max_chars=500,
+            # display_text=lambda url: url.split("/")[-1].replace("-", " ").title()  # Extract meaningful text from URL
+            display_text="https://(.*?)\.streamlit\.app"
+        ),
+        "github Profile": st.column_config.LinkColumn(
+            "Github Projects", 
+            # display_text=lambda url: url.split("/")[-2]  # Extract repository name from URL
+            display_text="Open Project"
+        ),
+    },
+    hide_index=True,
+)
+"""
+my_code(code_example)
+st.divider()
+
+#------------------------------------------------------------
+# syntax 
+# st.column_config.ImageColumn(label=None, *, width=None, help=None)
+
+st.subheader("15: Example: st.column_config.ImageColumn")
+
+
+img_df = pd.DataFrame(
+    {
+        "Images": [
+            "https://storage.googleapis.com/s4a-prod-share-preview/default/st_app_screenshot_image/5435b8cb-6c6c-490b-9608-799b543655d3/Home_Page.png",
+            "https://storage.googleapis.com/s4a-prod-share-preview/default/st_app_screenshot_image/ef9a7627-13f2-47e5-8f65-3f69bb38a5c2/Home_Page.png",
+            "https://storage.googleapis.com/s4a-prod-share-preview/default/st_app_screenshot_image/31b99099-8eae-4ff8-aa89-042895ed3843/Home_Page.png",
+            "https://storage.googleapis.com/s4a-prod-share-preview/default/st_app_screenshot_image/6a399b09-241e-4ae7-a31f-7640dc1d181e/Home_Page.png",
+        ],
+
+         "Quality": [99, 49, 89, 43],
+         "Sale": [True, False, True, False],
+         "Price": ["$200", "$50", "$270", "$48"],
+         "Available": [True, False, False, False],
+    }
+)
+
+st.data_editor(
+    img_df,
+    column_config={
+        "Images": st.column_config.ImageColumn(
+            "Pictures for Sale", 
+            help="Streamlit app preview screenshots",
+            width=200
+        )
+    },
+    hide_index=True,
+)
+
+
+#_____________________________________________________________
+st.title("14: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+
+st.subheader("15: Example: st.column_config.ImageColumn")
+
+
+img_df = pd.DataFrame(
+    {
+        "Images": [
+            "https://storage.googleapis.com/s4a-prod-share-preview/default/st_app_screenshot_image/5435b8cb-6c6c-490b-9608-799b543655d3/Home_Page.png",
+            "https://storage.googleapis.com/s4a-prod-share-preview/default/st_app_screenshot_image/ef9a7627-13f2-47e5-8f65-3f69bb38a5c2/Home_Page.png",
+            "https://storage.googleapis.com/s4a-prod-share-preview/default/st_app_screenshot_image/31b99099-8eae-4ff8-aa89-042895ed3843/Home_Page.png",
+            "https://storage.googleapis.com/s4a-prod-share-preview/default/st_app_screenshot_image/6a399b09-241e-4ae7-a31f-7640dc1d181e/Home_Page.png",
+        ],
+
+         "Quality": [99, 49, 89, 43],
+         "Sale": [True, False, True, False],
+         "Price": ["$200", "$50", "$270", "$48"],
+         "Available": [True, False, False, False],
+    }
+)
+
+st.data_editor(
+    img_df,
+    column_config={
+        "Images": st.column_config.ImageColumn(
+            "Pictures for Sale", 
+            help="Streamlit app preview screenshots",
+            width=200
+        )
+    },
+    hide_index=True,
+)
+"""
+my_code(code_example)
+st.divider()
+
+
+#------------------------------------------------------------
+# syntax 
+# st.column_config.LineChartColumn(label=None, *, width=None, help=None, y_min=None, y_max=None)
+
+st.subheader("16: Example: st.column_config.ImageColumn")
+
+data_df = pd.DataFrame(
+    {
+        "sales": [
+            [0, 4, 26, 80, 100, 40],
+            [80, 20, 80, 35, 40, 100],
+            [10, 20, 80, 80, 70, 0],
+            [10, 100, 20, 100, 30, 100],
+        ],
+    }
+)
+
+st.data_editor(
+    data_df,
+    column_config={
+        "sales": st.column_config.LineChartColumn(
+            "Sales (last 6 months)",
+            width="medium",
+            help="The sales volume in the last 6 months",
+            y_min=0,
+            y_max=100,
+         ),
+    },
+    hide_index=True,
+)
