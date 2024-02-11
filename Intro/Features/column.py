@@ -914,3 +914,50 @@ st.data_editor(
 """
 my_code(code_example)
 st.divider()
+
+
+#------------------------------------------------------------
+# syntax 
+# st.column_config.LinkColumn(label=None, *, width=None, help=None, disabled=None, required=None, default=None, max_chars=None, validate=None, display_text=None)
+st.subheader("14: Example: st.column_config.LinkColumn")
+
+link_df = pd.DataFrame(
+    {
+        "StreamlitTutorial": [
+            "https://docs.streamlit.io/library/api-reference/widgets/st.text_input",
+            "https://docs.streamlit.io/library/api-reference/data/st.column_config/st.column_config.linkcolumn",
+            "https://docs.streamlit.io/knowledge-base/tutorials/build-conversational-apps",
+            "https://docs.streamlit.io/library/api-reference",
+            "https://docs.streamlit.io/library/api-reference/write-magic",
+        ],
+        "github Profile": [
+            "https://github.com/Jamaludiin/NumPy",
+            "https://github.com/Jamaludiin/PythonTutorial",
+            "https://github.com/Jamaludiin/Pandas",
+            "https://github.com/Jamaludiin/StreamlitTutorial",
+            "https://github.com/Jamaludiin/File-Handling-with-Python",
+        ],
+    }
+)
+
+
+
+st.data_editor(
+    link_df,
+    column_config={
+        "StreamlitTutorial": st.column_config.LinkColumn(
+            "Streamlit Tutorials",
+            help="Most popular Streamlit tutorials",
+            validate="^https://[a-z]+\.streamlit\.app$",
+            max_chars=500,
+            # display_text=lambda url: url.split("/")[-1].replace("-", " ").title()  # Extract meaningful text from URL
+            display_text="https://(.*?)\.streamlit\.app"
+        ),
+        "github Profile": st.column_config.LinkColumn(
+            "Github Projects", 
+            # display_text=lambda url: url.split("/")[-2]  # Extract repository name from URL
+            display_text="Open Project"
+        ),
+    },
+    hide_index=True,
+)
