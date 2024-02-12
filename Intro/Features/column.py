@@ -1313,3 +1313,198 @@ st.data_editor(
 """
 my_code(code_example)
 st.divider()
+
+
+#------------------------------------------------------------
+# syntax 
+# st.column_config.ProgressColumn(label=None, *, width=None, help=None, format=None, min_value=None, max_value=None)
+
+st.subheader("18: Example: st.column_config.ProgressColumn")
+
+progress_df = pd.DataFrame(
+    {
+     "Main Score": [
+            [55,12,76,84,75,79],
+            [84,45,76,63,83,82],
+            [93,44,89,56,87,43],
+            [100,99,88,55,77,56],
+            [90,33,55,66,88,99], 
+        ],
+
+   "Score 2": [
+               [90,33,55,66,88,99], 
+               [84,45,76,63,83,82],
+               [93,44,89,56,87,43],
+               [100,99,88,55,77,56],
+               [90,33,55,66,88,99],
+               ],
+
+    "Score 3": [[88,99,88,55,77,56],
+                [93,44,89,56,87,43],
+                [99,99,88,55,77,56],
+                [90,33,55,66,88,99],
+                [88,99,88,55,77,56],
+                ]
+    }
+   
+)
+
+# Transpose the DataFrame
+progress_df_transposed = progress_df.transpose()
+st.data_editor(
+      progress_df)
+
+st.divider()
+
+
+for i in progress_df:
+   st.data_editor(
+      progress_df,
+      column_config={
+         i: st.column_config.ProgressColumn(
+            "First "+str(i),
+            help="The scores of the last week only "+str(i),
+            format="$%f",
+            min_value=0,
+            max_value=1000,
+            width=200
+         ),
+      },
+      hide_index=True,
+   )
+
+
+st.divider()
+
+# another example 
+
+progress_df = pd.DataFrame(
+    {
+     "Main Score":
+            [99,100,100,84,99,88],
+
+   "Score 2": 
+               [90,33,55,66,88,99], 
+
+    "Score 3": [88,99,88,55,77,56],
+
+    }
+   
+)
+
+for i in progress_df:
+   st.data_editor(
+      progress_df,
+      column_config={
+         i: st.column_config.ProgressColumn(
+            "First "+str(i),
+            help="The scores of the last week only "+str(i),
+            format="$%f",
+            min_value=0,
+            max_value=120,
+            width=200
+         ),
+      },
+      hide_index=True,
+      width=800
+   )
+
+
+   #_____________________________________________________________
+st.title("18: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+
+st.subheader("18: Example: st.column_config.ProgressColumn")
+
+progress_df = pd.DataFrame(
+    {
+     "Main Score": [
+            [55,12,76,84,75,79],
+            [84,45,76,63,83,82],
+            [93,44,89,56,87,43],
+            [100,99,88,55,77,56],
+            [90,33,55,66,88,99], 
+        ],
+
+   "Score 2": [
+               [90,33,55,66,88,99], 
+               [84,45,76,63,83,82],
+               [93,44,89,56,87,43],
+               [100,99,88,55,77,56],
+               [90,33,55,66,88,99],
+               ],
+
+    "Score 3": [[88,99,88,55,77,56],
+                [93,44,89,56,87,43],
+                [99,99,88,55,77,56],
+                [90,33,55,66,88,99],
+                [88,99,88,55,77,56],
+                ]
+    }
+   
+)
+
+# Transpose the DataFrame
+progress_df_transposed = progress_df.transpose()
+st.data_editor(
+      progress_df)
+
+st.divider()
+
+
+for i in progress_df:
+   st.data_editor(
+      progress_df,
+      column_config={
+         i: st.column_config.ProgressColumn(
+            "First "+str(i),
+            help="The scores of the last week only "+str(i),
+            format="$%f",
+            min_value=0,
+            max_value=1000,
+            width=200
+         ),
+      },
+      hide_index=True,
+   )
+
+
+st.divider()
+
+# another example 
+
+progress_df = pd.DataFrame(
+    {
+     "Main Score":
+            [99,100,100,84,99,88],
+
+   "Score 2": 
+               [90,33,55,66,88,99], 
+
+    "Score 3": [88,99,88,55,77,56],
+
+    }
+   
+)
+
+for i in progress_df:
+   st.data_editor(
+      progress_df,
+      column_config={
+         i: st.column_config.ProgressColumn(
+            "First "+str(i),
+            help="The scores of the last week only "+str(i),
+            format="$%f",
+            min_value=0,
+            max_value=120,
+            width=200
+         ),
+      },
+      hide_index=True,
+      width=800
+   )
+"""
+my_code(code_example)
+st.divider()
