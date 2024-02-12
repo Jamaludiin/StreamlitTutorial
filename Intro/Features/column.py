@@ -1051,7 +1051,7 @@ st.data_editor(
 
 
 #_____________________________________________________________
-st.title("14: Code of the Example above")
+st.title("15: Code of the Example above")
 
 code_example = """import streamlit as st
 import pandas as pd
@@ -1095,29 +1095,221 @@ st.divider()
 # syntax 
 # st.column_config.LineChartColumn(label=None, *, width=None, help=None, y_min=None, y_max=None)
 
-st.subheader("16: Example: st.column_config.ImageColumn")
+st.subheader("16: Example: st.column_config.LineChartColumn")
 
-data_df = pd.DataFrame(
+chart_df = pd.DataFrame(
     {
-        "sales": [
-            [0, 4, 26, 80, 100, 40],
-            [80, 20, 80, 35, 40, 100],
-            [10, 20, 80, 80, 70, 0],
-            [10, 100, 20, 100, 30, 100],
+     "Main Score": [
+            [55,12,76,84,75,79],
+            [84,45,76,63,83,82],
+            [93,44,89,56,87,43],
+            [100,99,88,55,77,56],
+            [90,33,55,66,88,99], 
         ],
+
+   "Score 2": [
+               [90,33,55,66,88,99], 
+               [84,45,76,63,83,82],
+               [93,44,89,56,87,43],
+               [100,99,88,55,77,56],
+               [90,33,55,66,88,99],
+               ],
+
+    "Score 3": [[100,99,88,55,77,56],
+                [93,44,89,56,87,43],
+                [100,99,88,55,77,56],
+                [90,33,55,66,88,99],
+                [100,99,88,55,77,56],
+                ]
     }
+
+   
 )
 
 st.data_editor(
-    data_df,
+    chart_df,
     column_config={
-        "sales": st.column_config.LineChartColumn(
-            "Sales (last 6 months)",
+        "Main Score": st.column_config.LineChartColumn(
+            "Score One",
             width="medium",
-            help="The sales volume in the last 6 months",
+            help="The scores of the last six days",
             y_min=0,
-            y_max=100,
+            y_max=200,
          ),
     },
     hide_index=True,
 )
+
+
+#_____________________________________________________________
+st.title("16: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+
+st.subheader("16: Example: st.column_config.LineChartColumn")
+
+chart_df = pd.DataFrame(
+    {
+     "Main Score": [
+            [55,12,76,84,75,79],
+            [84,45,76,63,83,82],
+            [93,44,89,56,87,43],
+            [100,99,88,55,77,56],
+            [90,33,55,66,88,99], 
+        ],
+
+   "Score 2": [
+               [90,33,55,66,88,99], 
+               [84,45,76,63,83,82],
+               [93,44,89,56,87,43],
+               [100,99,88,55,77,56],
+               [90,33,55,66,88,99],
+               ],
+
+    "Score 3": [[100,99,88,55,77,56],
+                [93,44,89,56,87,43],
+                [100,99,88,55,77,56],
+                [90,33,55,66,88,99],
+                [100,99,88,55,77,56],
+                ]
+    }
+
+   
+)
+
+st.data_editor(
+    chart_df,
+    column_config={
+        "Main Score": st.column_config.LineChartColumn(
+            "Score One",
+            width="medium",
+            help="The scores of the last six days",
+            y_min=0,
+            y_max=200,
+         ),
+    },
+    hide_index=True,
+)
+"""
+my_code(code_example)
+st.divider()
+
+
+#------------------------------------------------------------
+# syntax 
+# st.column_config.BarChartColumn(label=None, *, width=None, help=None, y_min=None, y_max=None)
+
+st.subheader("17: Example: st.column_config.BarChartColumn")
+
+chart_df = pd.DataFrame(
+    {
+     "Main Score": [
+            [55,12,76,84,75,79],
+            [84,45,76,63,83,82],
+            [93,44,89,56,87,43],
+            [100,99,88,55,77,56],
+            [90,33,55,66,88,99], 
+        ],
+
+   "Score 2": [
+               [90,33,55,66,88,99], 
+               [84,45,76,63,83,82],
+               [93,44,89,56,87,43],
+               [100,99,88,55,77,56],
+               [90,33,55,66,88,99],
+               ],
+
+    "Score 3": [[100,99,88,55,77,56],
+                [93,44,89,56,87,43],
+                [100,99,88,55,77,56],
+                [90,33,55,66,88,99],
+                [100,99,88,55,77,56],
+                ]
+    }
+
+   
+)
+
+st.data_editor(
+    chart_df,
+    column_config={
+        "Score 3": st.column_config.BarChartColumn(
+            "Scores of last week",
+            help="The scores is only generated last week",
+            y_min=0,
+            y_max=100,
+            width=200
+        ),
+         "Main Score": st.column_config.LineChartColumn(
+                     "Score One",
+                     width="medium",
+                     help="The scores of the last six days",
+                     y_min=0,
+                     y_max=200,
+                  ),
+            },
+    hide_index=True,
+)
+
+
+#_____________________________________________________________
+st.title("17: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+
+st.subheader("17: Example: st.column_config.BarChartColumn")
+
+chart_df = pd.DataFrame(
+    {
+     "Main Score": [
+            [55,12,76,84,75,79],
+            [84,45,76,63,83,82],
+            [93,44,89,56,87,43],
+            [100,99,88,55,77,56],
+            [90,33,55,66,88,99], 
+        ],
+
+   "Score 2": [
+               [90,33,55,66,88,99], 
+               [84,45,76,63,83,82],
+               [93,44,89,56,87,43],
+               [100,99,88,55,77,56],
+               [90,33,55,66,88,99],
+               ],
+
+    "Score 3": [[100,99,88,55,77,56],
+                [93,44,89,56,87,43],
+                [100,99,88,55,77,56],
+                [90,33,55,66,88,99],
+                [100,99,88,55,77,56],
+                ]
+    }
+
+   
+)
+
+st.data_editor(
+    chart_df,
+    column_config={
+        "Score 3": st.column_config.BarChartColumn(
+            "Scores of last week",
+            help="The scores is only generated last week",
+            y_min=0,
+            y_max=100,
+            width=200
+        ),
+         "Main Score": st.column_config.LineChartColumn(
+                     "Score One",
+                     width="medium",
+                     help="The scores of the last six days",
+                     y_min=0,
+                     y_max=200,
+                  ),
+            },
+    hide_index=True,
+)
+"""
+my_code(code_example)
+st.divider()
