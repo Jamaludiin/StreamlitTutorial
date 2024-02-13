@@ -113,3 +113,30 @@ with col2:
 """
 my_code(code_example)
 st.divider()
+
+
+#------------------------------------------------------------
+# syntax 
+# st.metric(label, value, delta=None, delta_color="normal", help=None, label_visibility="visible")
+
+st.subheader("3: Example of st.metric")
+col1, col2, col3 = st.columns(3)
+col1.metric("Sale Price", "45 $", "1.2% Discount")
+col2.metric("Anual Price", "99.9 $", "0.01% Discount")
+col3.metric("Member Price", str(77)+'$', "6% Low")
+
+#_____________________________________________________________
+
+st.title("3: Code of the Example above")
+
+code_example = """import streamlit as st
+
+st.subheader("3: Example of st.metric")
+
+col1, col2, col3 = st.columns(3)
+col1.metric("Sale Price", "45 $", "1.2% Discount")
+col2.metric("Anual Price", "99.9 $", "0.01% Discount")
+col3.metric("Member Price", str(77)+'$', "6% Low")
+"""
+my_code(code_example)
+st.divider()
