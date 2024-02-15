@@ -110,7 +110,7 @@ var_dic_data_1 = {
     "Score 4": [84,45,76,63,83,82],
     "Score 5": [55,12,76,84,75,79]
 }
-var_data_frame = pd.DataFrame(var_dic_data, index= (1,2,3,4,5))
+var_data_frame = pd.DataFrame(var_dic_data_1, index= (1,2,3,4,5,6))
              
 st.dataframe(var_data_frame)
 
@@ -129,7 +129,7 @@ var_dic_data_1 = {
     "Score 4": [84,45,76,63,83,82],
     "Score 5": [55,12,76,84,75,79]
 }
-var_data_frame = pd.DataFrame(var_dic_data, index= (1,2,3,4,5))
+var_data_frame = pd.DataFrame(var_dic_data, index= (1,2,3,4,5,6))
              
 st.dataframe(var_data_frame)
 
