@@ -267,3 +267,55 @@ with tab4:
 """
 my_code(code_example)
 st.divider()
+
+
+#------------------------------------------------------------
+# syntax 
+# st.altair_chart(altair_chart, use_container_width=False, theme="streamlit")
+st.subheader("4: Example of st.altair_chart using the Altair library with Airports Data")
+
+# to use the dataset of cars use this
+# pip install vega_datasets
+source = data.airports()
+
+st.dataframe(source,width=700)
+
+chart = alt.Chart(source).mark_circle().encode(
+    x='latitude',
+    y='longitude',
+    color='city',
+).interactive()
+
+    # Use the Streamlit theme.
+    # This is the default. So you can also omit the theme argument.
+st.altair_chart(chart, theme="streamlit", use_container_width=True)
+
+
+#_____________________________________________________________
+st.title("4: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+import altair as alt
+from vega_datasets import data
+
+st.subheader("4: Example of st.altair_chart using the Altair library with Airports Data")
+
+# to use the dataset of cars use this
+# pip install vega_datasets
+source = data.airports()
+
+st.dataframe(source,width=700)
+
+chart = alt.Chart(source).mark_circle().encode(
+    x='latitude',
+    y='longitude',
+    color='city',
+).interactive()
+
+    # Use the Streamlit theme.
+    # This is the default. So you can also omit the theme argument.
+st.altair_chart(chart, theme="streamlit", use_container_width=True)
+"""
+my_code(code_example)
+st.divider()
