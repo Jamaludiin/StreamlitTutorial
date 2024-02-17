@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
+from vega_datasets import data
 
 # def
 def my_code(code):
@@ -144,4 +145,125 @@ my_code(code_example)
 st.divider()
 
 
+#------------------------------------------------------------
+# syntax 
+# st.altair_chart(altair_chart, use_container_width=False, theme="streamlit")
+st.subheader("3: Example of st.altair_chart using the Altair library with real Data")
 
+# to use the dataset of cars use this
+# pip install vega_datasets
+source = data.cars()
+
+st.dataframe(source,width=700)
+
+chart = alt.Chart(source).mark_circle().encode(
+    x='Horsepower',
+    y='Cylinders',
+    color='Year',
+).interactive()
+
+tab1, tab2 = st.tabs(["Streamlit theme (default)", "Altair native theme"])
+
+with tab1:
+    # Use the Streamlit theme.
+    # This is the default. So you can also omit the theme argument.
+    st.altair_chart(chart, theme="streamlit", use_container_width=True)
+with tab2:
+    # Use the native Altair theme.
+    st.altair_chart(chart, theme=None, use_container_width=True)
+
+
+
+
+# ---------------
+source = data.cars()
+
+st.dataframe(source,width=700)
+
+chart = alt.Chart(source).mark_circle().encode(
+    x='Miles_per_Gallon',
+    y='Acceleration',
+    color='Name',
+).interactive()
+
+tab3, tab4 = st.tabs(["Another Columns 1", "Another Columns 2"])
+
+with tab3:
+    # Use the Streamlit theme.
+    # This is the default. So you can also omit the theme argument.
+    st.altair_chart(chart, theme="streamlit", use_container_width=True)
+with tab4:
+
+    chart = alt.Chart(source).mark_circle().encode(
+        x='Weight_in_lbs',
+        y='Cylinders',
+        color='Acceleration',
+    ).interactive()
+    # Use the native Altair theme.
+    st.altair_chart(chart, theme=None, use_container_width=True)
+
+
+#_____________________________________________________________
+st.title("3: Code of the Example above")
+
+code_example = """import streamlit as st
+import pandas as pd
+import altair as alt
+from vega_datasets import data
+
+st.subheader("3: Example of st.altair_chart using the Altair library with real Data")
+
+# to use the dataset of cars use this
+# pip install vega_datasets
+source = data.cars()
+
+st.dataframe(source,width=700)
+
+chart = alt.Chart(source).mark_circle().encode(
+    x='Horsepower',
+    y='Cylinders',
+    color='Year',
+).interactive()
+
+tab1, tab2 = st.tabs(["Streamlit theme (default)", "Altair native theme"])
+
+with tab1:
+    # Use the Streamlit theme.
+    # This is the default. So you can also omit the theme argument.
+    st.altair_chart(chart, theme="streamlit", use_container_width=True)
+with tab2:
+    # Use the native Altair theme.
+    st.altair_chart(chart, theme=None, use_container_width=True)
+
+
+
+
+# ---------------
+source = data.cars()
+
+st.dataframe(source,width=700)
+
+chart = alt.Chart(source).mark_circle().encode(
+    x='Miles_per_Gallon',
+    y='Acceleration',
+    color='Name',
+).interactive()
+
+tab3, tab4 = st.tabs(["Another Columns 1", "Another Columns 2"])
+
+with tab3:
+    # Use the Streamlit theme.
+    # This is the default. So you can also omit the theme argument.
+    st.altair_chart(chart, theme="streamlit", use_container_width=True)
+with tab4:
+
+    chart = alt.Chart(source).mark_circle().encode(
+        x='Weight_in_lbs',
+        y='Cylinders',
+        color='Acceleration',
+    ).interactive()
+    # Use the native Altair theme.
+    st.altair_chart(chart, theme=None, use_container_width=True)
+"""
+my_code(code_example)
+st.divider()
