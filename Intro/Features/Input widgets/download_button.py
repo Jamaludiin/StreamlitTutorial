@@ -61,7 +61,7 @@ st.download_button(
 )
 
 #_____________________________________________________________
-st.title("1: Code of the Example above")
+st.title("2: Code of the Example above")
 
 code_example = """import streamlit as st
 st.subheader("2: Example of st.download_button")
@@ -89,6 +89,60 @@ st.download_button(
     file_name='Scores_file.csv',
     mime='text/csv',
 )
+"""
+my_code(code_example)
+st.divider()
+
+
+#------------------------------------------------------------
+# syntax 
+# st.download_button(label, data, file_name=None, mime=None, key=None, help=None, on_click=None, args=None, kwargs=None, *, type="secondary", disabled=False, use_container_width=False)
+st.subheader("3: Example of st.download_button")
+
+binary_contents = b'Binary file example of st.download_button'
+
+st.download_button('Download binary file', binary_contents,file_name="Binary_file")
+
+#_____________________________________________________________
+st.title("3: Code of the Example above")
+
+code_example = """import streamlit as st
+st.subheader("3: Example of st.download_button")
+
+binary_contents = b'Binary file example of st.download_button'
+
+st.download_button('Download binary file', binary_contents,file_name="Binary_file")
+"""
+my_code(code_example)
+st.divider()
+
+
+#------------------------------------------------------------
+# syntax 
+# st.download_button(label, data, file_name=None, mime=None, key=None, help=None, on_click=None, args=None, kwargs=None, *, type="secondary", disabled=False, use_container_width=False)
+st.subheader("4: Example of st.download_button")
+
+with open("streamlit-mark-color.png", "rb") as file:
+    btn = st.download_button(
+            label="Download image",
+            data=file,
+            file_name="streamlit-mark-color.png",
+            mime="image/png"
+          )
+
+#_____________________________________________________________
+st.title("4: Code of the Example above")
+
+code_example = """import streamlit as st
+st.subheader("4: Example of st.download_button")
+
+with open("streamlit-mark-color.png", "rb") as file:
+    btn = st.download_button(
+            label="Download image",
+            data=file,
+            file_name="streamlit-mark-color.png",
+            mime="image/png"
+          )
 """
 my_code(code_example)
 st.divider()
