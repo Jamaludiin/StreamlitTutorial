@@ -58,7 +58,7 @@ st.map(df,
 
 
 #_____________________________________________________________
-st.title("1: Code of the Example above")
+st.title("2: Code of the Example above")
 
 code_example = """import streamlit as st
 import pandas as pd
