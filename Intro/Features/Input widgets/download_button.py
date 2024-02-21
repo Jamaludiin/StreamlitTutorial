@@ -64,6 +64,8 @@ st.download_button(
 st.title("2: Code of the Example above")
 
 code_example = """import streamlit as st
+import pandas as pd
+
 st.subheader("2: Example of st.download_button")
 
 # Assuming my_large_df is a DataFrame you have created or loaded from somewhere
