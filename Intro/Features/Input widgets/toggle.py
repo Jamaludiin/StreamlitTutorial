@@ -13,3 +13,20 @@ pypl = st.toggle("Select Payment Plan")
 
 if pypl:
     st.write("You have selected Payment Plan Option")
+
+
+#_____________________________________________________________
+st.title("1: Code of the Example above")
+
+code_example = """import streamlit as st
+
+st.subheader("1: Example of st.toggle")
+
+pypl = st.toggle("Select Payment Plan")
+
+if pypl:
+    st.write("You have selected Payment Plan Option")
+
+"""
+my_code(code_example)
+st.divider()
