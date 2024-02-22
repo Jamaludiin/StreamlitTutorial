@@ -40,7 +40,7 @@ st.subheader("2: Example of st.selectbox")
 # Create a selectbox with all arguments and parameters
 selected_option = st.selectbox(
     label="Choose an Option",
-    options=["Option 1", "Option 2", "Option 4", "Option 5"],
+    options=["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"],
     index=0,
     
     key="selectbox_key",
@@ -51,4 +51,29 @@ selected_option = st.selectbox(
     label_visibility="visible"
 )
 
-st.write('You selected to pay through:', payment_option)
+st.write('You selected to pay through:', selected_option)
+
+#_____________________________________________________________
+st.title("1: Code of the Example above")
+
+code_example = """import streamlit as st
+st.subheader("2: Example of st.selectbox")
+
+# Create a selectbox with all arguments and parameters
+selected_option = st.selectbox(
+    label="Choose an Option",
+    options=["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"],
+    index=0,
+    
+    key="selectbox_key",
+    help="Select one of the options",
+    
+    placeholder="Choose an option",
+    disabled=False,
+    label_visibility="visible"
+)
+
+st.write('You selected to pay through:', selected_option)
+"""
+my_code(code_example)
+st.divider()
