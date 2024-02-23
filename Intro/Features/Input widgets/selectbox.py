@@ -121,3 +121,64 @@ else:
 """
 my_code(code_example)
 st.divider()
+
+
+#------------------------------------------------------------
+# syntax 
+# st.selectbox(label, options, index=0, format_func=special_internal_function, key=None, help=None, on_change=None, args=None, kwargs=None, *, placeholder="Choose an option", disabled=False, label_visibility="visible")
+st.subheader("4: Example of st.selectbox")
+
+# Store the initial value of widgets in session state
+if "visibility" not in st.session_state:
+    st.session_state.visibility = "visible"
+    st.session_state.disabled = False
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.checkbox("Disable selectbox widget", key="disabled")
+    st.radio(
+        "Set selectbox label visibility 👉",
+        key="visibility",
+        options=["visible", "hidden", "collapsed"],
+    )
+
+with col2:
+    option = st.selectbox(
+        "How would you like to be contacted?",
+        ("Email", "Home phone", "Mobile phone"),
+        label_visibility=st.session_state.visibility,
+        disabled=st.session_state.disabled,
+    )
+
+#_____________________________________________________________
+st.title("4: Code of the Example above")
+
+code_example = """import streamlit as st
+st.subheader("4: Example of st.selectbox")
+# Store the initial value of widgets in session state
+if "visibility" not in st.session_state:
+    st.session_state.visibility = "visible"
+    st.session_state.disabled = False
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.checkbox("Disable selectbox widget", key="disabled")
+    st.radio(
+        "Set selectbox label visibility 👉",
+        key="visibility",
+        options=["visible", "hidden", "collapsed"],
+    )
+
+with col2:
+    option = st.selectbox(
+        "How would you like to be contacted?",
+        ("Email", "Home phone", "Mobile phone"),
+        label_visibility=st.session_state.visibility,
+        disabled=st.session_state.disabled,
+    )
+
+"""
+my_code(code_example)
+st.divider()
