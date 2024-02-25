@@ -67,3 +67,83 @@ st.write('My name is', name)
 """
 my_code(code_example)
 st.divider()
+
+
+
+#------------------------------------------------------------
+# syntax 
+# st.text_input(label, value="", max_chars=None, key=None, type="default", help=None, autocomplete=None, on_change=None, args=None, kwargs=None, *, placeholder=None, disabled=False, label_visibility="visible")
+
+st.subheader("3: Example of st.text_input")
+# this code is from streamlit website for practice purpose 
+# Store the initial value of widgets in session state
+if "visibility" not in st.session_state:
+    st.session_state.visibility = "visible"
+    st.session_state.disabled = False
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.checkbox("Disable text input widget", key="disabled")
+    st.radio(
+        "Set text input label visibility 👉",
+        key="visibility",
+        options=["visible", "hidden", "collapsed"],
+    )
+    st.text_input(
+        "Placeholder for the other text input widget",
+        "This is a placeholder",
+        key="placeholder",
+    )
+
+with col2:
+    text_input = st.text_input(
+        "Enter some text 👇",
+        label_visibility=st.session_state.visibility,
+        disabled=st.session_state.disabled,
+        placeholder=st.session_state.placeholder,
+    )
+
+    if text_input:
+        st.write("You entered: ", text_input)
+
+
+#_____________________________________________________________
+st.title("2: Code of the Example above")
+
+code_example = """import streamlit as st
+st.subheader("3: Example of st.text_input")
+# this code is from streamlit website for practice purpose 
+# Store the initial value of widgets in session state
+if "visibility" not in st.session_state:
+    st.session_state.visibility = "visible"
+    st.session_state.disabled = False
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.checkbox("Disable text input widget", key="disabled")
+    st.radio(
+        "Set text input label visibility 👉",
+        key="visibility",
+        options=["visible", "hidden", "collapsed"],
+    )
+    st.text_input(
+        "Placeholder for the other text input widget",
+        "This is a placeholder",
+        key="placeholder",
+    )
+
+with col2:
+    text_input = st.text_input(
+        "Enter some text 👇",
+        label_visibility=st.session_state.visibility,
+        disabled=st.session_state.disabled,
+        placeholder=st.session_state.placeholder,
+    )
+
+    if text_input:
+        st.write("You entered: ", text_input)
+"""
+my_code(code_example)
+st.divider()
