@@ -49,7 +49,7 @@ name = st.text_input(label='What is your name',
 st.write('My name is', name)
 
 #_____________________________________________________________
-st.title("1: Code of the Example above")
+st.title("2: Code of the Example above")
 
 code_example = """import streamlit as st
 st.subheader("2: Example of st.text_input")
@@ -109,7 +109,7 @@ with col2:
 
 
 #_____________________________________________________________
-st.title("2: Code of the Example above")
+st.title("3: Code of the Example above")
 
 code_example = """import streamlit as st
 st.subheader("3: Example of st.text_input")
@@ -144,6 +144,45 @@ with col2:
 
     if text_input:
         st.write("You entered: ", text_input)
+"""
+my_code(code_example)
+st.divider()
+
+
+
+
+#------------------------------------------------------------
+# syntax 
+# st.text_input(label, value="", max_chars=None, key=None, type="default", help=None, autocomplete=None, on_change=None, args=None, kwargs=None, *, placeholder=None, disabled=False, label_visibility="visible")
+
+st.subheader("4: Example of st.text_input with counting words")
+# Quick Two Line Codes
+count_Words = st.text_input(label="Write Some text")
+counted_Words = len(count_Words.split())
+st.write("The number of Words you wrote in the given area is:", counted_Words)
+ 
+# Quick One Line Codes
+st.write("Geeksforgeeks is best Computer Science Portal:",len("Geeksforgeeks is best Computer Science Portal".split()))
+
+# Quick One Line Code with User Input
+st.write(len(st.text_input("Enter Input:").split()))
+
+#_____________________________________________________________
+st.title("4: Code of the Example above")
+
+code_example = """import streamlit as st
+
+st.subheader("4: Example of st.text_input with counting words")
+# Quick Two Line Codes
+count_Words = st.text_input(label="Write Some text")
+counted_Words = len(count_Words.split())
+st.write("The number of Words you wrote in the given area is:", counted_Words)
+ 
+# Quick One Line Codes
+st.write("Geeksforgeeks is best Computer Science Portal:",len("Geeksforgeeks is best Computer Science Portal".split()))
+
+# Quick One Line Code with User Input
+st.write(len(st.text_input("Enter Input:").split()))
 """
 my_code(code_example)
 st.divider()
