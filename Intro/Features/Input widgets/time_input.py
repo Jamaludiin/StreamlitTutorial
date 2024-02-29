@@ -47,3 +47,32 @@ st.divider()
 # st.time_input(label, value="now", key=None, help=None, on_change=None, args=None, kwargs=None, *, disabled=False, label_visibility="visible", step=0:15:00)
 
 st.subheader("2: Example of st.time_input")
+
+time3 = st.time_input('Tell me the time', value=None)
+st.write('Thank you, the time is', time3)
+
+
+if time3 is not None:
+    st.write("Yes, now you have set the time")
+else:
+    st.write("Time not set yet, Please set the time")
+
+#_____________________________________________________________
+st.title("2: Code of the Example above")
+
+code_example = """import streamlit as st
+import datetime
+
+st.subheader("2: Example of st.time_input")
+
+time3 = st.time_input('Tell me the time', value=None)
+st.write('Thank you, the time is', time3)
+
+
+if time3 is not None:
+    st.write("Yes, now you have set the time")
+else:
+    st.write("Time not set yet, Please set the time")
+"""
+my_code(code_example)
+st.divider()
