@@ -11,3 +11,15 @@ def my_code(code):
 st.subheader("1: Example of st.image")
 
 st.image('Python Sets.png', caption='Python Sets cover page')
+
+#_____________________________________________________________
+st.title("1: Code of the Example above")
+
+code_example = """import streamlit as st
+st.subheader("1: Example of st.image")
+
+st.image('Python Sets.png', caption='Python Sets cover page')
+"""
+my_code(code_example)
+st.divider()
+
