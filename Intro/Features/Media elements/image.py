@@ -52,3 +52,45 @@ st.image('Python Tuples.png',
 """
 my_code(code_example)
 st.divider()
+
+
+#------------------------------------------------------------
+# syntax 
+# st.image(image, caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
+st.subheader("3: Example of st.image Download")
+
+# Display the image
+img = 'Python Sets.png'
+st.image(img, caption='Download Python Sets cover page', clamp=True, output_format="PNG")
+
+# Add a download link for the image
+st.download_button('Download Image', 
+                   data = '/Users/jamalabdullahi/Python Tutorial/StreamlitTutorial/Intro/Features/Media elements/Python Sets.png)',
+                   disabled=False,
+                   use_container_width=True,
+                   file_name='Python Sets.png',
+                   mime='image/png',
+                   type="primary")
+
+
+#_____________________________________________________________
+st.title("3: Code of the Example above")
+
+code_example = """import streamlit as st
+st.subheader("3: Example of st.image Download")
+
+# Display the image
+img = 'Python Sets.png'
+st.image(img, caption='Download Python Sets cover page', clamp=True, output_format="PNG")
+
+# Add a download link for the image
+st.download_button('Download Image', 
+                   data = '/Users/jamalabdullahi/Python Tutorial/StreamlitTutorial/Intro/Features/Media elements/Python Sets.png)',
+                   disabled=False,
+                   use_container_width=True,
+                   file_name='Python Sets.png',
+                   mime='image/png',
+                   type="primary")
+"""
+my_code(code_example)
+st.divider()
