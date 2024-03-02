@@ -94,3 +94,49 @@ st.download_button('Download Image',
 """
 my_code(code_example)
 st.divider()
+
+
+#------------------------------------------------------------
+# syntax 
+# st.image(image, caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
+st.subheader("4: Example of st.image Download This correct way of downloading")
+
+# Display the image
+img_path = 'Python Sets.png'
+st.image(img_path, caption='Download Python Sets cover page', clamp=True, output_format="PNG")
+
+# Add a download link for the image
+with open(img_path, 'rb') as file:
+    img_bytes = file.read()
+    st.download_button('Download Image', 
+                       data=img_bytes,
+                       file_name='Python_Sets.png',
+                       mime='image/png',
+                       key='download_button',
+                        type="primary",
+                        use_container_width=True)
+
+
+#_____________________________________________________________
+st.title("4: Code of the Example above")
+
+code_example = """import streamlit as st
+st.subheader("4: Example of st.image Download This correct way of downloading")
+
+# Display the image
+img_path = 'Python Sets.png'
+st.image(img_path, caption='Download Python Sets cover page', clamp=True, output_format="PNG")
+
+# Add a download link for the image
+with open(img_path, 'rb') as file:
+    img_bytes = file.read()
+    st.download_button('Download Image', 
+                       data=img_bytes,
+                       file_name='Python_Sets.png',
+                       mime='image/png',
+                       key='download_button',
+                        type="primary",
+                        use_container_width=True)
+"""
+my_code(code_example)
+st.divider()
