@@ -1,6 +1,12 @@
+# installed these
+# pip install streamlit-mic-recorder
+# pip install streamlit-audiorec
+
+
 import streamlit as st
 from st_audiorec import st_audiorec
 
+# record_audio
 # def
 def my_code(code):
     st.code(f"""{code}""")
@@ -9,9 +15,28 @@ def my_code(code):
 # syntax 
 # st.audio(data, format="audio/wav", start_time=0, *, sample_rate=None)
 
-st.subheader("1: Example of st.audio")
+st.subheader("1: Example of st_audiorec")
 
+st.subheader("Using the package made by Stefan https://github.com/stefanrmmr/streamlit-audio-recorder")
 wav_audio_data = st_audiorec()
 
 if wav_audio_data is not None:
     st.audio(wav_audio_data, format='audio/wav')
+
+
+#_____________________________________________________________
+st.title("1: Code of the Example above")
+
+code_example = """import streamlit as st
+from st_audiorec import st_audiorec
+
+st.subheader("1: Example of st_audiorec")
+
+st.subheader("Using the package made by Stefan https://github.com/stefanrmmr/streamlit-audio-recorder")
+wav_audio_data = st_audiorec()
+
+if wav_audio_data is not None:
+    st.audio(wav_audio_data, format='audio/wav')
+"""
+my_code(code_example)
+st.divider()
