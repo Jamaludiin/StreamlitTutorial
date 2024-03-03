@@ -66,3 +66,35 @@ add_selectbox = st.sidebar.select_slider(
 """
 my_code(code_example)
 st.divider()
+
+
+#------------------------------------------------------------
+# syntax 
+# st.sidebar.[element_name]
+# "with" notation
+#with st.sidebar:
+   # st.[element_name]
+
+st.subheader("1: Example of st.sidebar 'with' notation")
+# Using "with" notation
+with st.sidebar:
+    st.divider()
+    st.subheader("st.sidebar 'with' notation")
+
+    add_selectbox = st.sidebar.multiselect(
+    "How would you like to pay your bills?",
+    ("Card", "Cash", "Loan", "Online Banking"),
+    key='multiselect1'
+    )
+
+    add_selectbox = st.sidebar.radio(
+        "How would you like to pay your bills?",
+        ("Card", "Cash", "Loan", "Online Banking"),
+        key="radio1"
+    )
+
+    add_selectbox = st.sidebar.select_slider(
+        "How would you like to pay your bills?",
+        ("Card", "Cash", "Loan", "Online Banking"),
+        key="select_slider"
+    )
