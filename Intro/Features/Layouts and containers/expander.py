@@ -1,5 +1,4 @@
 import streamlit as st
-import numpy as np
 import pandas as pd
 
 
@@ -28,6 +27,7 @@ with st.expander("See explanation"):
 st.title("1: Code of the Example above")
 
 code_example = """import streamlit as st
+
 st.subheader("1: Example of st.expander")
 
 
@@ -70,6 +70,8 @@ with st.expander("See More data and figures"):
 st.title("1: Code of the Example above")
 
 code_example = """import streamlit as st
+import pandas as pd
+
 st.subheader("2: Example of st.expander")
 with st.expander("See More data and figures"):
     # display data
