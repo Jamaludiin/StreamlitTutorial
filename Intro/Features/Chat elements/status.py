@@ -67,7 +67,6 @@ with st.status("Sending Message...", expanded=True):
 st.title("2: Code of the Example above")
 
 code_example = """import streamlit as st
-import time
 import numpy as np
 
 st.subheader("2: Example of st.status")
@@ -81,6 +80,60 @@ with st.status("Sending Message...", expanded=True):
     Message = st.chat_input("Send a message")
     if Message:
         st.write(f"User: {Message}")
+"""
+my_code(code_example)
+st.divider()
+
+
+#------------------------------------------------------------
+# syntax 
+# st.status(label, *, expanded=False, state="running")
+
+st.subheader("3: Example of st.status")
+
+with st.status("Sending Message...", expanded=True) as status:
+    with st.chat_message("user"):
+        time.sleep(1)
+        st.write("Hello 👋")
+        time.sleep(1)
+        st.write("My Friend 👋")
+        time.sleep(1)
+        st.line_chart(np.random.randn(30, 3))
+
+    Message = st.chat_input("Send a message..")
+    if Message:
+        st.write(f"User: {Message}")
+        time.sleep(1)
+    status.update(label="Message Sent!", state="complete", expanded=True)
+
+st.button('Rerun again')
+
+
+#_____________________________________________________________
+st.title("3: Code of the Example above")
+
+code_example = """import streamlit as st
+import time
+import numpy as np
+
+st.subheader("3: Example of st.status")
+
+with st.status("Sending Message...", expanded=True) as status:
+    with st.chat_message("user"):
+        time.sleep(1)
+        st.write("Hello 👋")
+        time.sleep(1)
+        st.write("My Friend 👋")
+        time.sleep(1)
+        st.line_chart(np.random.randn(30, 3))
+
+    Message = st.chat_input("Send a message..")
+    if Message:
+        st.write(f"User: {Message}")
+        time.sleep(1)
+    status.update(label="Message Sent!", state="complete", expanded=True)
+
+st.button('Rerun again')
 """
 my_code(code_example)
 st.divider()
