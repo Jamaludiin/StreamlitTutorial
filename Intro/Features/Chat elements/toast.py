@@ -60,6 +60,7 @@ if user_likes is not None:
 st.title("2: Code of the Example above")
 
 code_example = """import streamlit as st
+import time
 
 st.subheader("2: Example of st.toast")
 
